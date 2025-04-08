@@ -11,29 +11,33 @@
     --background-color-3: rgba(39, 39, 39, 1);
     --text-color: #ffffff;
     --important-color: rgba(0, 208, 255, 1);
+    --important-color-2: rgba(0, 125, 153, 1);
     --border-color: rgba(180, 180, 180, 1);
     --input-background-color: rgba(66, 66, 66, 1);
 }
-body{
-    height:100vh;
-    width:100vw;
+body {
+    min-height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
+    align-items: start; 
+    padding: 40px 0; 
+    background-color: var(--background-color);
+    overflow-y: auto;
+  }
 .registration-page{
     color: var(--text-color);
     font-size: 10px;
-    width: 50%;
-    height: 100%;
-    background-color: red;
+    min-width: 50%;
+    
 }
 .registration-page .registration-container{
     position: relative;
-    background-color: var(--background-color-2);
-    border-radius:15px;
     display:flex;
     flex-direction:column;
+    box-shadow: 5px 5px 5px #00000025;
+    background-color: var(--background-color-2);
+    border-radius:15px;
 }
 .title-page-registration{
     background-color: var(--background-color-3);
@@ -58,7 +62,8 @@ body{
     flex-direction: column;
     padding:20px;
 }
-.container-components-user .title-sub-container{
+.container-components-user .title-sub-container,
+.container-components-account .title-sub-container{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -85,6 +90,7 @@ body{
     font-weight: normal;
     color: var(--text-color);
 }
+
 .component-user01 .sub-component,
 .component-user02 .sub-component {
     position: relative;
@@ -94,28 +100,142 @@ body{
     border-radius: 5px;
 }
 .sub-component{
+    width: 100%;
+    position:relative;
     margin:10px 5px;
+    transition: all 0.2s ease-in-out;
+}
+.component .sub-component:focus-within{
+    outline: none;
+    border: 1px solid var(--important-color);
+    box-shadow: 0 0 5px var(--important-color);
+    color:var(--important-color);
+}
+.component .sub-component:focus-within i{
+    color: var(--important-color);
+}
+.sub-component input:focus{
+    outline: none;
+    border:none;
 }
 .sub-component i{
-    font-size:10px;
+    font-size:12px;
     color: var(--border-color);
     padding:5px;
 }
 .component-user01 .component input{
-    width: 92%;
-    min-width: 90%;
-    padding:5px;
-    background: transparent;
-    border:none;
-    color:var(--border-color)
-}
-.component-user02 .component input{
-    width: 87%;
+    width: 85%;
     min-width: 80%;
     padding:5px;
     background: transparent;
     border:none;
     color:var(--border-color)
 }
+
+.component-user02 .component input{
+    width: 85%;
+    min-width: 80%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color)
+}
+
+.container-components-account .sub-component{
+    position: relative;
+    background:var(--input-background-color);
+    padding:2px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+.container-components-account .sub-component i{
+    font-size:12px;
+    color: var(--border-color);
+    padding:5px;
+}
+.container-components-account .sub-component #eye-closed,
+.container-components-account .sub-component #eye-opened{
+    border:none;
+    background: transparent;
+    cursor:pointer;
+}
+.container-components-account .sub-component input{
+    width: 80%;
+    min-width: 70%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color)
+}
+
+.container-components-account .component .label{
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.component-account-key{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-gap: 10px;
+}
+.component-account-key .sub-component{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.component-account-key .sub-component input{
+    max-width: 75%;
+    min-width: 60%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color)
+}
+
+.btns-container{
+    position: relative;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding:20px;
+}
+.btns-container #btn-login{
+    border:none;
+    background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
+    padding:10px;
+    width: 30%;
+    color:var(--text-color);
+    font-weight: bold;
+    font-size:15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 4px #00000025;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position .2s ease-in-out;
+}
+.btns-container #btn-login:hover{
+    background-position: right center;
+}
+.btns-container p{
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+.btns-container p .redirection-link{
+    color: var(--important-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.btns-container p .redirection-link:hover{
+    color: var(--important-color-2);
+    text-decoration: underline;
+}
+
+
+
 
 
