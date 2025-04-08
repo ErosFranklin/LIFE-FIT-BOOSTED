@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+:root {
+    --background-color: rgba(63, 63, 63, 1);
+    --background-color-2: rgba(53, 53, 53, 1);
+    --background-color-3: rgba(39, 39, 39, 1);
+    --text-color: #ffffff;
+    --important-color: rgba(0, 208, 255, 1);
+    --border-color: rgba(180, 180, 180, 1);
+    --input-background-color: rgba(66, 66, 66, 1);
+}
+body{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.registration-page{
+    color: var(--text-color);
+    font-size: 10px;
+    width: 50%;
+    height: 100%;
+    background-color: red;
+}
+.registration-page .registration-container{
+    position: relative;
+    background-color: var(--background-color-2);
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+}
+.title-page-registration{
+    background-color: var(--background-color-3);
+    border-bottom: 2px solid var(--border-color);
+    border-radius:15px 15px 0px 0px;
+    padding:20px;
+    text-align: center;
+}
+.title-page-registration h1{
+    font-size: 25px;
+    font-weight: 800;
+    font-weight:bolder;
+    color: var(--text-color);
+}
+.title-page-registration p{
+    font-size: 12px;
+    font-weight: lighter;
+    color: var(--text-color);
+}
+.form-registration{
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+}
+.container-components-user .title-sub-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0px;
+    font-weight: normal;
+}
+.title-sub-container i{
+    font-size: 15px;
+    color: var(--important-color);
+    padding-right: 10px;
+}
+.container-components-user .component-user01{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-gap: 10px;
+}
+.container-components-user .component-user02{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.component label{
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+.component-user01 .sub-component,
+.component-user02 .sub-component {
+    position: relative;
+    background:var(--input-background-color);
+    padding:2px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+.sub-component{
+    margin:10px 5px;
+}
+.sub-component i{
+    font-size:10px;
+    color: var(--border-color);
+    padding:5px;
+}
+.component-user01 .component input{
+    width: 92%;
+    min-width: 90%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color)
+}
+.component-user02 .component input{
+    width: 87%;
+    min-width: 80%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color)
+}
+
+
