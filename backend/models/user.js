@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    weith: {
+    weigth: {
         type: Number,
         required: true,
     },
