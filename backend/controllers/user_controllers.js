@@ -1,8 +1,8 @@
 const User = require('../models/user.js');
-const logger = require('../utils/logger');
+const logger = require('../utils/logger.js');
 
 exports.createUserController = async (data) => {
-    const { name, email, password, number, height, weight } = data;
+    const { name, email, password, number, weight, height } = data;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -15,8 +15,8 @@ exports.createUserController = async (data) => {
             email,
             password,
             number, 
-            height, 
-            weight
+            weight, 
+            height
         });
 
         await newUser.save();

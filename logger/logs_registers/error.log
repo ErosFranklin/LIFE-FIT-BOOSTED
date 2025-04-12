@@ -1,0 +1,6 @@
+[2025-04-12 11:02:03] ERROR: Erro ao criar usuário: client is not defined
+[2025-04-12 11:05:32] ERROR: Erro ao criar usuário: client is not defined
+[2025-04-12 11:07:57] ERROR: Erro ao criar usuário: client is not defined
+[2025-04-12 11:10:49] ERROR: Erro ao criar usuário: User validation failed: heigth: Path `heigth` is required., weigth: Path `weigth` is required.
+[2025-04-12 11:12:19] ERROR: Erro ao criar usuário: User validation failed: heigth: Path `heigth` is required., weigth: Path `weigth` is required.
+[2025-04-12 12:27:18] ERROR: Erro ao criar usuário: E11000 duplicate key error collection: test.users index: number_1 dup key: { number: "83999714969" }

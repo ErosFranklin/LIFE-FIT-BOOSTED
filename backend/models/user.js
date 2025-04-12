@@ -18,12 +18,13 @@ const userSchema = new mongoose.Schema({
     number: {
         type: String,
         required: true,
+        unique: true
     },
-    weigth: {
+    weight: {
         type: Number,
         required: true,
     },
-    heigth: {
+    height: {
         type: Number,
         required: true,
     }
