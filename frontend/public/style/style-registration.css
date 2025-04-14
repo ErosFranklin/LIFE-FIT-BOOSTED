@@ -24,11 +24,12 @@ body {
     padding: 40px 0; 
     background-color: var(--background-color);
     overflow-y: auto;
+    overflow-x: hidden;
   }
 .registration-page{
     color: var(--text-color);
     font-size: 10px;
-    min-width: 50%;
+    max-width: 50%;
     
 }
 .registration-page .registration-container{
@@ -96,6 +97,7 @@ body {
     position: relative;
     background:var(--input-background-color);
     padding:2px;
+    width: 100%;
     border: 1px solid var(--border-color);
     border-radius: 5px;
 }
@@ -153,11 +155,12 @@ body {
     color: var(--border-color);
     padding:5px;
 }
-.container-components-account .sub-component #eye-closed,
-.container-components-account .sub-component #eye-opened{
+.container-components-account .sub-component #eyes,
+.container-components-account .sub-component #eyes2{
     border:none;
     background: transparent;
     cursor:pointer;
+    transition: 1 ease-in-out;
 }
 .container-components-account .sub-component input{
     width: 80%;
@@ -200,7 +203,7 @@ body {
     flex-direction: column;
     padding:20px;
 }
-.btns-container #btn-login{
+.btns-container #btn-register{
     border:none;
     background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
     padding:10px;
