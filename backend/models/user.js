@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    birthday_day :{
+        type:  Date,
+        required: true,
+    },
     number: {
         type: String,
         required: true,

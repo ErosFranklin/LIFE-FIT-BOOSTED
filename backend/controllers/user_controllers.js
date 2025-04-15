@@ -1,8 +1,15 @@
 const User = require('../models/user.js');
 const logger = require('../utils/logger.js');
+const moment = require('moment');
 
 exports.createUserController = async (data) => {
-    const { name, email, password, number, weight, height } = data;
+    const { name, email, password, birthday_day, number, weight, height } = data;
+
+    const birth = moment(birthday_day, 'DD/MM/YYYY');
+
+    if (!birth.isValid()) {
+        return { error: 'Data de nascimento inválida', statusCode: 400 };
+    }
 
     try {
         const existingUser = await User.findOne({ email });
@@ -14,6 +21,7 @@ exports.createUserController = async (data) => {
             name,
             email,
             password,
+            birthday_day: birth.toDate(),
             number, 
             weight, 
             height
