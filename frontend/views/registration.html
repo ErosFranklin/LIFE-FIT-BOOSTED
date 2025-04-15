@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - LFB</title>
+    <link rel="stylesheet" href="../public/style/style-registration.css">
+    <link rel="stylesheet" href="../public/style/media-query-style-registration.css">
+    <link rel="stylesheet" href="../public/style/style-spinner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <main class="registration-page">
+        
+        <div class="registration-container">
+            <div class="title-page-registration">
+                <h1>Crie sua Conta</h1>
+                <p>Preencha todos os campos para começar sua jornada.</p>
+            </div>
+            <form method="POST" class="form-registration" id="form-registration">
+                <div class="container-components-user">
+                    <span class="title-sub-container"><i class="fa-solid fa-user-pen"></i><h2>Informações Pessoais</h2></span>
+                    <div class="component-user01">
+                        <div class="component">
+                            <label for="name">Nome Completo:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Nome Completo" required>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <label for="date_bith">Data de Nascimento:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input type="date" id="date_bith" name="date_bith" placeholder="dd/mm/aaaa" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-user02">
+                        <div class="component">
+                            <label for="name">Numero:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="text" id="user_number" name="user_number" placeholder="83999999999" required>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <label for="name">Altura (cm):</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-ruler-vertical"></i>
+                                <input type="number" id="user_height" name="user_height" placeholder="180" required>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <label for="name">Peso (kg):</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-weight-hanging"></i>
+                                <input type="number" id="user_weight" name="user_weight" placeholder="75.6" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-components-account">
+                    <span class="title-sub-container"><i class="fa-solid fa-envelopes-bulk"></i><h2>Informações da Conta</h2></span>
+                    <div class="component">
+                        <label for="name">Email:</label>
+                        <div class="sub-component">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                        </div>
+                    </div>
+                    <div class="component">
+                        <label for="name">Confirmar Email:</label>
+                        <div class="sub-component">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="conf_email" name="conf_email" placeholder="example@gmail.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="component-account-key">
+                        <div class="component">
+                            <label for="name">Senha:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="********" required>
+                                <i class="fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <label for="name">Confirmar Senha:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="conf_password" name="conf_password" placeholder="********" required>
+                                <i class="fa-solid fa-eye" id="eyes2" onclick="mostrarConfSenha()"></i>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns-container">
+                    <span id="error_message"></span>
+                    <button type="submit" id="btn-register">Cadastra-se</button>
+                    <p>Já tem uma conta? <span class="redirection-link">Faça Login</span></p>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="../public/javascript/registration.js"></script>
+    <script src="../public/javascript/eyes.js"></script>
+</body>
+</html>
