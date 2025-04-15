@@ -10,4 +10,3 @@
 [2025-04-12 12:27:18] ERROR: Erro ao criar usuário: E11000 duplicate key error collection: test.users index: number_1 dup key: { number: "83999714969" }
 [2025-04-12 12:27:42] INFO: Usuário de nome Matheus Coelho e email matheusnb19@gmail.com criado com sucesso!
 [2025-04-12 12:31:09] INFO: Usuário de nome Kaio Vinícius e email kaiovbatista19@gmail.com criado com sucesso!
-[2025-04-14 21:08:15] INFO: Usuário de nome Gabriel Ferreira e email gfo2130626@email.com criado com sucesso!
