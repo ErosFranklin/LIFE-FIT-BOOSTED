@@ -70,14 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const data={
                 name,
+                email,
+                password,
                 dateBith,
                 number,
-                height,
                 weight,
-                email,
-                password
+                height,
+                
             }
-            const response = await fetch("/users", {
+            const response = await fetch("/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
