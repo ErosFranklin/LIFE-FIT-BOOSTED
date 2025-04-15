@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
     <main class="registration-page">
-        <div class="container-spinner">
-            <div class="overlay-spinner" >
-                <div class="spinner"></div>
-            </div>
-      </div>
+        
         <div class="registration-container">
             <div class="title-page-registration">
                 <h1>Crie sua Conta</h1>
@@ -45,7 +46,7 @@
                             <label for="name">Numero:</label>
                             <div class="sub-component">
                                 <i class="fa-solid fa-phone"></i>
-                                <input type="number" id="user_number" name="user_number" placeholder="83999999999" required>
+                                <input type="text" id="user_number" name="user_number" placeholder="83999999999" required>
                             </div>
                         </div>
                         <div class="component">

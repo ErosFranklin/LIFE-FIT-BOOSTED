@@ -219,7 +219,7 @@ body {
     background-position: left center;
     transition: background-position .2s ease-in-out;
 }
-.btns-container #btn-login:hover{
+.btns-container #btn-register:hover{
     background-position: right center;
 }
 .btns-container p{
@@ -236,6 +236,12 @@ body {
 .btns-container p .redirection-link:hover{
     color: var(--important-color-2);
     text-decoration: underline;
+}
+.btns-container #error_message{
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+    padding:10px;
 }
 
 
