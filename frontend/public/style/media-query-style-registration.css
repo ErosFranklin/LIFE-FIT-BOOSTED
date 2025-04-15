@@ -1,0 +1,22 @@
+/*Typical Device Breakpoint
+----------------------------
+Telas pequenas: ate 600px
+Celular:de 600px ate 750px
+Tablet: 768px ate 993px
+Desktop: 992px ate 1200px
+Grandes telas: acima de 1200px
+*/
+
+@media screen and (max-width:1024px) {
+    .container-components-user .component-user01,
+    .container-components-user .component-user02,
+    .component-account-key{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .btns-container #btn-login{
+        min-width: 60%;
+    }@media (orientation:landscape){
+        /* tenho que terminar aqui */
+    }
+
+}

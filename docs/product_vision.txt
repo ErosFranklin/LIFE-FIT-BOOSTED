@@ -1,0 +1,61 @@
+# Visão do Produto
+
+O sistema tem como objetivo melhorar o gerenciamento e monitoramento de treinos e dieta, utilizando um sistema informatizado.
+
+Público-alvo: Pessoas que buscam organizar e monitorar tanto seus treinos quanto sua alimentação em um único lugar.
+
+Problema resolvido: Atualmente, muitos usuários utilizam métodos manuais – como planilhas e anotações em papel – 
+para gerenciar seus treinos e dietas, o que pode levar à perda de dados, retrabalho e falta de organização. Este sistema visa digitalizar 
+esses processos, proporcionando maior eficiência, facilidade de uso e controle, permitindo que os usuários acompanhem seu desempenho e 
+evolução de forma integrada.
+
+---
+
+# Arquitetura do Produto
+
+O sistema será construído utilizando a arquitetura **MVC (Model-View-Controller)**, que promove a separação de responsabilidades entre a interface do usuário, a lógica de negócio e o acesso aos dados.
+
+### Estrutura da Arquitetura:
+
+1. **Model (Modelo)**:
+   - Responsável por representar os dados da aplicação.
+   - Interage diretamente com o banco de dados, realizando as operações de inserção, consulta, atualização e remoção.
+
+2. **View (Visão)**:
+   - Responsável pela interface com o usuário.
+   - Desenvolvida em HTML, CSS e JavaScript.
+   - Contém os formulários, páginas de login, cadastro, alteração de senha, cadastro de dieta e treinos...
+   - Interage com o usuário e envia/recebe dados do Controller via Fetch API.
+
+3. **Controller (Controlador)**:
+   - Responsável por gerenciar as requisições entre a View e o Model.
+   - Desenvolvido com Express.js(Node.js), expõe endpoints da API para autenticação, manipulação de dados e envio de e-mails.
+   - Controla a lógica de negócio, validando dados recebidos e retornando respostas apropriadas.
+
+---
+
+### Tecnologias Utilizadas:
+
+- **Frontend**:
+  - HTML, CSS e JavaScript.  
+  - Utilização da Fetch API para chamadas HTTP assíncronas.  
+  - Páginas organizadas para login, cadastro, painéis de acompanhamento de treinos e dietas.
+
+- **Backend**:
+  - Express.js (Node.js) para a criação dos endpoints REST.  
+  - Autenticação e autorização utilizando JWT.  
+  - Estruturação dos controllers, services e models conforme o padrão MVC.
+
+- **Banco de Dados**:
+  - MongoDB (não relacional), armazenando informações dos usuários, treinos e dietas.
+
+- **Segurança**:
+  - Criptografia de senhas com bcrypt.  
+  - Autenticação por meio de JWT e verificação de token em rotas protegidas.  
+  - Validação de e-mail para segurança e recuperação de senha.
+
+---
+
+Integrantes do projeto:
+- [Eros Franklin Soares Felix, Front-End]
+- [Francisco das Chagas Medeiros Neto]
