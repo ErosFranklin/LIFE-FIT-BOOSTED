@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.height = parseFloat(data.height);
 
             console.log(data);
-            const response = await fetch("http://localhost:3000/api/user/register", {
+            const response = await fetch("https://life-fit-boosted.vercel.app/api/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
