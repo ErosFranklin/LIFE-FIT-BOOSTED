@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - LFB</title>
-    <link rel="stylesheet" href="../public/style/style-registration.css">
-    <link rel="stylesheet" href="../public/style/media-query-style-registration.css">
+    <link rel="stylesheet" href="../public/style/style-login.css">
+    <link rel="stylesheet" href="../public/style/media-query-style-login.css">
     <link rel="stylesheet" href="../public/style/style-spinner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -16,10 +16,45 @@
         </div>
     </div>
     <main class="login-page">
-        
         <div class="login-container">
+            <div class="title-page-login">
+                <h1>Login</h1>
+                <p>Preencha todos os campos para acessar o sistema.</p>
+            </div>
+            <form class="form-login" id="form-login">
+                <div class="container-components-account">
+                    <div class="component">
+                        <label for="name">Email:</label>
+                        <div class="sub-component">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                        </div>
+                    </div>
+                    <div class="component-account-key">
+                        <div class="component">
+                            <label for="name">Senha:</label>
+                            <div class="sub-component">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="********" required>
+                                <i class="fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="btns-container">
+                    <span id="error_message"></span>
+                    <button type="submit" id="btn-login">Acessar</button>
+                    <p>Ainda não é cadastrado? <span class="redirection-link">Cadastra-se</span></p>
+                </div>
+            </form>
             
         </div>
+        <div class="container-logo">
+            <img src="../public/image/logo.png" alt="logo-lfb">
+        </div>
     </main>
+    <script src="../public/javascript/eyes.js"></script>
+    <script src="../public/javascript/login.js"></script>
 </body>
 </html>
