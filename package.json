@@ -16,5 +16,8 @@
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.2",
     "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.2"
   }
 }
