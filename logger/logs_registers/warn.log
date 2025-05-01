@@ -6,3 +6,7 @@
 [2025-04-12 12:27:18] ERROR: Erro ao criar usuário: E11000 duplicate key error collection: test.users index: number_1 dup key: { number: "83999714969" }
 [2025-05-01 17:39:46] WARN: Senha inválida para o usuário com credencial kaiovbatista19@gmail.com.
 [2025-05-01 17:40:22] WARN: Usuário com credencial kaiovbatista1@gmail.com não encontrado.
+[2025-05-01 19:51:39] WARN: Senha inválida para o usuário com credencial test123@gmail.com.
+[2025-05-01 19:56:07] WARN: Usuário com credencial eros@gmail.com não encontrado.
+[2025-05-01 19:56:24] WARN: Usuário com credencial eros@gmail.com não encontrado.
+[2025-05-01 19:56:55] WARN: Senha inválida para o usuário com credencial test123@gmail.com.

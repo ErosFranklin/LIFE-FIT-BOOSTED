@@ -9,7 +9,7 @@ const app = express();
 
 connectDB();
 app.use(cors({
-  origin: 'https://life-fit-boosted.vercel.app',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
