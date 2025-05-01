@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const btnLogin = document.getElementById("btn-login");
-    const spinner = document.getElementById("container-spinner");
+    const spinner = document.querySelector(".container-spinner");
     const errorMessage = document.getElementById("error_message");
 
     btnLogin.addEventListener("click", async function (event) {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("/api/login", {
+            const response = await fetch("/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                 throw new Error(errorData.message || "Erro ao fazer login.");
             }
             const data = await response.json();
+            console.log("Login bem-sucedido:", data);
 
         } catch (error) {
             console.error("Erro ao fazer login:", error);
-            errorMessage.textContent = error.message || "Erro ao fazer login.";
             errorMessage.style.display = "block";
             
         }finally {

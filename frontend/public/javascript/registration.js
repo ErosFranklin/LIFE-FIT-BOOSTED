@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const result = await response.json();
             console.log(result);
             alert('cadastro realizado com sucesso!');
+            window.location.href = "../public/index.html";
 
         } catch (error) {
             console.error("Error:", error);
