@@ -31,9 +31,34 @@ const userSchema = new mongoose.Schema({
     height: {
         type: Number,
         required: true,
-    }
+    },    
+    training_split: {
+        type: String,
+        enum: ['ABC', 'ABCD', 'ABCDE'],
+        default: null
+    },
+    training_days: {
+        type: [String], 
+        default: []
+    },
+    trainings_of_week: {
+        type: Map,
+        of: new mongoose.Schema({
+            muscleArea: {
+            type: String,
+            enum: ['Peito', 'Costas', 'Quadriceps', 'Posterior', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen', 'Cardio'],
+            required: true
+          },
+          exercise: [
+            {
+              name: { type: String, required: true },
+              reps: { type: Number, required: true }
+            }
+          ]
+        }, { _id: false }),
+        default: {}
+      }
 
-    
 }, { timestamps: true });
 
 userSchema.pre('save', async function(next) {
