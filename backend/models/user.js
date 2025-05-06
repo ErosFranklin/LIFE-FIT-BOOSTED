@@ -35,30 +35,40 @@ const userSchema = new mongoose.Schema({
     training_split: {
         type: String,
         enum: ['ABC', 'ABCD', 'ABCDE'],
-        default: null
+        default: null,
+        required: true
     },
     training_days: {
         type: [String], 
-        default: []
+        default: [],
+        required: true
     },
     trainings_of_week: {
         type: Map,
-        of: new mongoose.Schema({
+        of: [
+          new mongoose.Schema({
             muscleArea: {
-            type: String,
-            enum: ['Peito', 'Costas', 'Quadriceps', 'Posterior', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen', 'Cardio'],
-            required: true
-          },
-          exercise: [
-            {
-              name: { type: String, required: true },
-              reps: { type: Number, required: true }
+              type: [String],
+              enum: ['Peito', 'Costas', 'Quadriceps', 'Posterior', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen'],
+              required: true
+            },
+            exercise: {
+              type: [
+                {
+                  name: { type: String, required: true },
+                  series: { type: Number, required: true }
+                }
+              ],
+              validate: {
+                validator: function (val) {
+                  return val.length >= 2 && val.length <= 5;
+                },
+                message: 'Cada grupo muscular deve ter entre 2 e 5 exercícios.'
+              }
             }
-          ]
-        }, { _id: false }),
-        default: {}
+          }, { _id: false }),
+        ]
       }
-
 }, { timestamps: true });
 
 userSchema.pre('save', async function(next) {
