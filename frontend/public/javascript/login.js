@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("https://life-fit-boosted.onrender.com/api/user/login", {
+            const response = await fetch("http://localhost:10000/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -36,6 +36,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
             const data = await response.json();
             console.log("Login bem-sucedido:", data);
+            if(data && data.token){
+                localStorage.setItem("token", data.token);
+                const decode = jwt_decode(data.token);
+                const userId = decode.id;
+                localStorage.setItem("userId", userId);
+                localStorage.setItem("email", email);
+                localStorage.setItem("token-decode", decode);
+                localStorage.setItem("trainning-split", decode.training_split);
+            }
             window.location.href = "../public/views/home-page.html"; 
 
         } catch (error) {
