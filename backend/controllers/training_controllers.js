@@ -1,5 +1,5 @@
-const User = require('../backend/models/user');
-const logger = require('../backend/utils/logger');
+const User = require('../models/user');
+const logger = require('../utils/logger');
 
 // Criar ou atualizar o split do
 exports.setTrainingSplit = async (req, res) => {
@@ -230,12 +230,12 @@ const validMuscleGroups = [
 ];
 
 // Setar treinos da semana
-exports.setTrainingsOfWeek = async (req, res) => {
+exports.setTrainingByDay = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const { trainings_of_week } = req.body;
+    const { userId, day } = req.params;
+    const { groups } = req.body;
 
-    logger.info(`SET trainings_of_week para usuário: ${userId}`);
+    logger.info(`SET treino do dia '${day}' para usuário: ${userId}`);
 
     const user = await User.findById(userId);
     if (!user) {
@@ -243,44 +243,47 @@ exports.setTrainingsOfWeek = async (req, res) => {
       return res.status(404).json({ error: 'Usuário não encontrado.' });
     }
 
-    const allowedDays = user.training_days;
+    if (!user.training_days.includes(day)) {
+      return res.status(400).json({ error: `Dia '${day}' não está definido em training_days.` });
+    }
 
-    for (const [day, groups] of Object.entries(trainings_of_week)) {
-      if (!allowedDays.includes(day)) {
-        return res.status(400).json({ error: `Dia '${day}' não está definido em training_days.` });
+    if (!Array.isArray(groups)) {
+      return res.status(400).json({ error: `Formato inválido para os grupos do dia ${day}.` });
+    }
+
+    for (const group of groups) {
+      if (!Array.isArray(group.muscleArea) || group.muscleArea.length === 0) {
+        return res.status(400).json({ error: `Grupo muscular inválido no dia ${day}.` });
       }
 
-      if (!Array.isArray(groups)) {
-        return res.status(400).json({ error: `Formato inválido para os grupos do dia ${day}.` });
+      if (!Array.isArray(group.exercise) || group.exercise.length === 0) {
+        return res.status(400).json({ error: `Exercícios inválidos no dia ${day}.` });
       }
 
-      for (const group of groups) {
-        if (!Array.isArray(group.muscleArea) || group.muscleArea.length === 0) {
-          return res.status(400).json({ error: `Grupo muscular inválido no dia ${day}.` });
-        }
-
-        if (!Array.isArray(group.exercise) || group.exercise.length === 0) {
-          return res.status(400).json({ error: `Exercícios inválidos no dia ${day}.` });
-        }
-
-        for (const ex of group.exercise) {
-          if (!ex.name || typeof ex.name !== 'string' || typeof ex.series !== 'number') {
-            return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
-          }
+      for (const ex of group.exercise) {
+        if (!ex.name || typeof ex.name !== 'string' || typeof ex.series !== 'number') {
+          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
         }
       }
     }
 
-    user.trainings_of_week = trainings_of_week;
-    await user.save(); // aqui o model valida a regra de 2~5 por grupo e até 7 no dia
+   // Atualiza apenas o dia específico de forma segura
+if (!(user.trainings_of_week instanceof Map)) {
+  user.trainings_of_week = new Map();
+}
 
-    logger.info(`Treinos da semana atualizados para usuário: ${userId}`);
-    res.status(200).json(user.trainings_of_week);
+user.trainings_of_week.set(day, groups);
+
+await user.save();
+logger.info(`Treino do dia '${day}' atualizado para usuário: ${userId}`);
+res.status(200).json({ [day]: user.trainings_of_week.get(day) });
+
   } catch (err) {
-    logger.error(`Erro ao definir trainings_of_week para ${req.params.userId}: ${err.message}`);
-    res.status(500).json({ error: 'Erro ao definir os treinos da semana.', details: err.message });
+    logger.error(`Erro ao definir treino do dia ${req.params.day} para ${req.params.userId}: ${err.message}`);
+    res.status(500).json({ error: 'Erro ao definir o treino do dia.', details: err.message });
   }
 };
+
 
 // Obter treinos da semana
 exports.getTrainingsOfWeek = async (req, res) => {
