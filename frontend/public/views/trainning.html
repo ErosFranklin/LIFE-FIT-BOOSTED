@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treinos</title>
+  <link rel="stylesheet" href="../style/style-trainning.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <nav class="side-menu">
+      <div class="image-menu">
+        <img src="../" alt="">
+      </div>
+      <ul>
+        <li class="menu-item">
+          <a href="../html/conta.html">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <span class="txt-link">Dados</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/grupo.html">
+            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
+            <span class="txt-link">Treinos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/contato.html">
+            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="txt-link">Dieta</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/creditos.html">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="txt-link">Contato</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/sobre.html">
+            <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="txt-link">Sobre</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <button id="logout">
+            <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+            <span class="txt-link">Sair</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+<!--
+   <h1>GIFs de Exercícios 💪</h1>
+  <div id="exercises"></div>
+
+  <script>
+    async function getExercises() {
+      const response = await fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/back?limit=10', {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'f4e318fb5amsh9fdfb335006b82ep1f3ef5jsn66df7f1b85d2', // 👈 Coloque sua chave da RapidAPI aqui
+          'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+        }
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      let container = document.getElementById('exercises');
+      container.innerHTML = '';
+
+      data.forEach(exercise => {
+        container.innerHTML += `
+          <div class="exercise">
+            <h3>${exercise.name}</h3>
+            <img src="${exercise.gifUrl}" alt="${exercise.name}">
+            <p>Músculo: ${exercise.target}</p>
+          </div>
+        `;
+      });
+    }
+
+    getExercises();
+  </script>
+
+-->
+</body>
+</html>

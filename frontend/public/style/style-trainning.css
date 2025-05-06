@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+:root {
+    --background-color: rgba(63, 63, 63, 1);
+    --background-color-2: rgba(53, 53, 53, 1);
+    --background-color-3: rgba(39, 39, 39, 1);
+    --text-color: #ffffff;
+    --important-color: rgba(0, 208, 255, 1);
+    --important-color-2: rgba(0, 125, 153, 1);
+    --border-color: rgba(180, 180, 180, 1);
+    --input-background-color: rgba(66, 66, 66, 1);
+}
+body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: start; 
+    padding: 40px 0; 
+    background-color: var(--background-color);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+.side-menu{
+    width: 80px;
+    height: 100%;
+    padding:30px 0 30px 1%;
+    background-color: var(--background-color-2);
+    box-shadow: 5px 0 0 var(--background-color-3);
+    position:fixed;
+    top:0;
+    left:0;
+    transition: .5s;
+    z-index: 1;
+}
+
+.side-menu:hover {
+    width: 300px;
+}
+.btn-expand{
+    width: 100%;
+    padding-left:10px
+}
+.btn-expand i{
+    color:#fff;
+    font-size: 26px;
+    cursor:pointer;
+}
+.side-menu ul{
+    height: 100%;
+}
+.side-menu .menu-item{
+    list-style:none;
+    
+}
+.menu-item a{
+    display:flex;
+    left:0;
+    color:#ffffff;
+    font-size: 16px;
+    padding:10px 4%;
+    text-decoration: none;
+    overflow: hidden;
+    transition: .1s ease-in-out;
+}
+
+.menu-item a:hover{
+    border-radius: 5px;
+    margin-right: 5px;
+    background:transparent;
+    border:1px solid var(--important-color-2);
+    color:var(--important-color);
+}
+.menu-item button{
+    display:flex;
+    width: 98%;
+    left:0;
+    color:#ffffff;
+    font-size: 16px;
+    padding:10px 4%;
+    text-decoration: none;
+    overflow: hidden;
+    border: none;
+    background-color: transparent;
+    transition: .1s ease-in-out;
+}
+.menu-item button:hover{
+    cursor:pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    background:transparent;
+    border:1px solid var(--important-color-2);
+    color:var(--important-color);
+}
+.menu-item .icon{
+    font-size: 1.5rem;
+    margin:15px 0px;
+    padding-left:15px;
+    width: 50px;
+    transition: .2s ease-in-out
+}
+.icon{
+    font-size: 17px;
+}
+.menu-item .txt-link{
+    font-size: 20px;
+    transition: .18s;
+    opacity: 0;
+    transform: translateY(18px);
+}
+.side-menu:hover .txt-link{
+    text-align: center;
+    margin-left:50px;
+    opacity: 1;
+}
