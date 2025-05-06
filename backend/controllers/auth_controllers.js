@@ -27,6 +27,8 @@ const loginController = async (data) => {
             email: user.email,
             name: user.name,
             type: "access", 
+            training_split: user.training_split,
+            has_training_split: !!user.training_split,
         };
         
         const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '1h' });
