@@ -55,11 +55,12 @@
     </nav>
   </header>
   <menu>
+    
+    <div class="trainning-header">
+      <h1>Treinos</h1>
+      <button id="btn-add-exercise">Adicionar Exercício</button>
+    </div>
     <div class="trainning-container">
-      <div class="trainning-header">
-        <h1>Treinos</h1>
-        <button id="add-exercise">Adicionar Exercício</button>
-      </div>
       <div class="trainning-list" id="trainning-list">
         <!-- Lista de treinos será gerada aqui -->
       </div>
@@ -82,11 +83,26 @@
             <option value="ABCD">ABCD</option>
             <option value="ABCDE">ABCDE</option>
           </select>
+        
+        <div class="container-trainning-days">
+          <h3>Quais os seus dias de treino?</h3>
+          <div id="form-training-days">
+            <label><input type="checkbox" name="training_day" value="segunda"> Segunda</label><br>
+            <label><input type="checkbox" name="training_day" value="terça"> Terça</label><br>
+            <label><input type="checkbox" name="training_day" value="quarta"> Quarta</label><br>
+            <label><input type="checkbox" name="training_day" value="quinta"> Quinta</label><br>
+            <label><input type="checkbox" name="training_day" value="sexta"> Sexta</label><br>
+            <label><input type="checkbox" name="training_day" value="sábado"> Sábado</label><br>
+            <label><input type="checkbox" name="training_day" value="domingo"> Domingo</label><br>
+          </div>
+        </div>
+          
           <div class="container-btn-split">
             <span id="error_message"></span>
             <button type="submit" id="btn-split">Adicionar</button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   </menu>
@@ -126,5 +142,6 @@
 
 -->
   <script src="../javascript/trainning-split.js"></script>
+  <script src="../javascript/trainnings.js"></script>
 </body>
 </html>

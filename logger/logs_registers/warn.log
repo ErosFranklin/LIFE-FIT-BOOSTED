@@ -15,3 +15,18 @@
 [2025-05-06 16:23:10] WARN: Senha inválida para o usuário com credencial test123@gmail.com.
 [2025-05-06 16:23:51] WARN: Senha inválida para o usuário com credencial matheusnb19@gmail.com.
 [2025-05-06 16:25:26] WARN: Senha inválida para o usuário com credencial matheusnb19@gmail.com.
+[2025-05-06 18:06:11] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:06:16] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:09:29] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:10:19] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:11:21] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:14:09] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:42:51] WARN: Divisão inválida recebida: 
+[2025-05-06 19:43:31] WARN: Divisão inválida recebida: 
+[2025-05-06 19:46:49] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:47:05] WARN: Divisão inválida recebida: 
+[2025-05-06 20:01:02] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:02:22] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:03:35] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:06:03] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:10:31] WARN: Usuário 681a969544470942599fb226 já possui split definido.

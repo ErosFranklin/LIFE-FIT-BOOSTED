@@ -35,3 +35,40 @@
 [2025-05-06 16:34:20] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
 [2025-05-06 16:35:53] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
 [2025-05-06 17:18:20] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 17:51:40] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 18:05:07] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:05:07] INFO: Split definido com sucesso para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:11] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:11] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:06:16] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:16] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:09:29] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:09:29] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:10:19] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:10:19] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:11:21] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:11:21] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:14:09] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:14:09] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:12:30] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 19:42:51] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:42:51] WARN: Divisão inválida recebida: 
+[2025-05-06 19:43:31] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:43:31] WARN: Divisão inválida recebida: 
+[2025-05-06 19:46:49] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:46:49] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:47:05] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:47:05] WARN: Divisão inválida recebida: 
+[2025-05-06 20:01:02] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:02:22] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:03:35] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:06:03] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:09:10] INFO: Usuário de nome Eros Franklin Soares Felix e email eros123@gmail.com criado com sucesso!
+[2025-05-06 20:10:00] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 20:10:15] INFO: Solicitação de SET de split para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:15] INFO: Split definido com sucesso para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:31] INFO: Solicitação de SET de split para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:31] WARN: Usuário 681a969544470942599fb226 já possui split definido.
+[2025-05-06 20:14:52] INFO: SET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 20:14:52] INFO: Dias de treino definidos para usuário 681a969544470942599fb226: segunda,quarta,sexta
+[2025-05-06 20:18:19] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.

@@ -30,8 +30,8 @@ body {
     width: 80px;
     height: 100%;
     padding:30px 0 30px 1%;
-    background-color: var(--background-color-2);
-    box-shadow: 5px 0 0 var(--background-color-3);
+    background-color: var(--background-color-3);
+    box-shadow: 5px 0 0 var(--border-color);
     position:fixed;
     top:0;
     left:0;
@@ -210,6 +210,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 10px 0px;
     margin-top:20px;
 }
@@ -236,5 +237,72 @@ body {
     font-size: 12px;
     font-weight: normal;
     padding:10px;
+}
+.container-trainning-days{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.container-trainning-days h3{
+    color: var(--text-color);
+    font-weight: bolder;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+.container-trainning-days #form-training-days{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+}
+.container-trainning-days #form-training-days label{
+    color: var(--text-color);
+    font-weight: bolder;
+    margin-right: 10px;
+}
+.container-trainning-days #form-training-days label:has(input[type="checkbox"]:checked) {
+    color: var(--important-color); /* muda a cor do texto do label */
+}
+
+.trainning-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+    padding: 20px 0px;
+    top:0;
+    left:0;
+    border-bottom: 1px solid var(--border-color);
+}
+.trainning-header h1{
+    position: relative;
+    margin-left:150px;
+    color:var(--text-color);
+    font-weight: bolder;
+}
+.trainning-header #btn-add-exercise{
+    border:none;
+    background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
+    padding:10px;
+    margin-right: 50px;
+    min-width: 10%;
+    color:var(--text-color);
+    font-weight: bold;
+    font-size:15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 4px #00000025;
+    cursor: pointer;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position .2s ease-in-out;
+}
+.trainning-header #btn-add-exercise:hover{
+    background-position: right center;
 }
 

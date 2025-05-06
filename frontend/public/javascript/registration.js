@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.height = parseFloat(data.height);
 
             console.log(data);
-            const response = await fetch("https://life-fit-boosted.onrender.com/api/user/register", {
+            const response = await fetch("http://localhost:10000/api/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const result = await response.json();
             console.log(result);
             alert('cadastro realizado com sucesso!');
-            window.location.href = "../public/index.html";
+            window.location.href = "../index.html";
 
         } catch (error) {
             console.error("Error:", error);

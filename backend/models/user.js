@@ -36,12 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['ABC', 'ABCD', 'ABCDE'],
         default: null,
-        required: true
     },
     training_days: {
         type: [String], 
         default: [],
-        required: true
     },
     trainings_of_week: {
         type: Map,

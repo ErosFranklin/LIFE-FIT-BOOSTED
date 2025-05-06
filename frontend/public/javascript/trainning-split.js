@@ -9,48 +9,96 @@ document.addEventListener("DOMContentLoaded", async function () {
     const errorMessage = document.querySelector("#error_message");
     const btnSplit = document.querySelector("#btn-split");
 
-    if (!splitTrainning) {
-        modalSplit(split);
-    }
+    console.log(splitTrainning)
 
-    async function modalSplit(split) {
+    if (!splitTrainning) {
         modal.style.display = "flex";
         overlay.style.display = "flex";
-
-        btnSplit.addEventListener("click", async function (event) {
-            event.preventDefault();
-            try {
-                const trainingSplit = split.value;
-                console.log("Valor do split:", trainingSplit);
-
-                const response = await fetch(`http://localhost:10000/api/${userId}/create/training/split`, {
-                    method: "POST",  
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`, 
-                    },
-                    body: JSON.stringify({ training_split: trainingSplit })
-                });
-
-                if (!response.ok) {
-                    throw new Error("Erro ao criar split de treino.");
-                }
-
-                const data = await response.json();
-                console.log(data);
-
-                modal.style.display = "none";
-                overlay.style.display = "none";
-
-            } catch (error) {
-                console.error("Error:", error);
-                errorMessage.textContent = "Erro ao criar split de treino. Tente novamente mais tarde.";
-                errorMessage.style.display = "block";
-            } finally {
-                errorMessage.style.display = "none";  
-            }
-        });
     }
+
+    btnSplit.addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        // 1️⃣ Primeiro: capturar o split
+        const trainingSplit = split.value;
+        console.log("Valor do split:", trainingSplit);
+        /*
+        try {
+            const responseSplit = await fetch(`http://localhost:10000/api/${userId}/create/training/split`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ training_split: trainingSplit })
+            });
+
+            if (!responseSplit.ok) {
+                throw new Error("Erro ao criar split de treino.");
+            }
+
+            const dataSplit = await responseSplit.json();
+            console.log("Split criado com sucesso:", dataSplit);
+
+            // Salvar no localStorage
+            localStorage.setItem("trainning-split", trainingSplit);
+
+
+        } catch (error) {
+            console.error("Erro ao criar split:", error);
+            errorMessage.textContent = "Erro ao criar split de treino. Tente novamente mais tarde.";
+            errorMessage.style.display = "block";
+            return; // se falhou aqui, não continua para enviar dias
+        }
+        */
+
+        // 2️⃣ Depois: capturar os dias selecionados
+        const checkboxes = document.querySelectorAll('input[name="training_day"]:checked');
+        const selectedDays = Array.from(checkboxes).map(cb => cb.value);
+
+        console.log("Dias selecionados:", selectedDays);
+
+        // Validação básica
+        const splitLimits = { ABC: 3, ABCD: 4, ABCDE: 5 };
+
+        if (!splitLimits[trainingSplit]) {
+            alert("Split não definido ou inválido.");
+            return;
+        }
+
+        if (selectedDays.length !== splitLimits[trainingSplit]) {
+            errorMessage.textContent = `Você precisa selecionar exatamente ${splitLimits[trainingSplit]} dias para o split ${trainingSplit}.`;
+            errorMessage.style.display = "block";
+            return;
+        }
+
+        try {
+            const responseDays = await fetch(`http://localhost:10000/api/${userId}/create/training/days`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ training_days: selectedDays })
+            });
+
+            if (!responseDays.ok) {
+                const errorData = await responseDays.json();
+                throw new Error(errorData.error || "Erro ao definir dias de treino.");
+            }
+
+            const dataDays = await responseDays.json();
+            console.log("Dias de treino definidos com sucesso:", dataDays);
+            alert("Split e dias de treino definidos com sucesso!");
+
+            modal.style.display = "none";
+            overlay.style.display = "none";
+
+        } catch (error) {
+            console.error("Erro ao definir dias:", error);
+            alert("Erro ao definir dias de treino. Tente novamente mais tarde.");
+        }
+    });
 
     closeModal.addEventListener("click", function () {
         modal.style.display = "none";
