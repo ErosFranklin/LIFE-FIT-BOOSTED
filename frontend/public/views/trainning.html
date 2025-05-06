@@ -11,7 +11,7 @@
   <header>
     <nav class="side-menu">
       <div class="image-menu">
-        <img src="../" alt="">
+        <img src="../image//logo-0-name.png" alt="logo">
       </div>
       <ul>
         <li class="menu-item">
@@ -53,6 +53,42 @@
       </ul>
     </nav>
   </header>
+  <menu>
+    <div class="trainning-container">
+      <div class="trainning-header">
+        <h1>Treinos</h1>
+        <button id="add-exercise">Adicionar Exercício</button>
+      </div>
+      <div class="trainning-list" id="trainning-list">
+        <!-- Lista de treinos será gerada aqui -->
+      </div>
+    </div>
+    <div class="modal-split-trainning">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Adicione sua Split de Treino <i class="fa-solid fa-address-book"></i></h2>
+          <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="info-split">
+          <p>ABC - Treino de 3 dias por Semana</p>
+          <p>ABCD - Treino de 4 dias por Semana</p>
+          <p>ABCDE - Treino de 5 dias por Semana</p>
+        </div>
+        <form id="add-split-form">
+          <select name="split" id="split">
+            <option value="" disabled selected>Selecione sua Split</option>
+            <option value="ABC">ABC</option>
+            <option value="ABCD">ABCD</option>
+            <option value="ABCDE">ABCDE</option>
+          </select>
+          <div class="container-btn-split">
+            <span id="error_message"></span>
+            <button type="submit" id="btn-split">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </menu>
 <!--
    <h1>GIFs de Exercícios 💪</h1>
   <div id="exercises"></div>
@@ -88,5 +124,6 @@
   </script>
 
 -->
+  <script src="../javascript/trainning-split.js"></script>
 </body>
 </html>
