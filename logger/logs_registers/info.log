@@ -19,3 +19,9 @@
 [2025-05-01 17:39:46] WARN: Senha inválida para o usuário com credencial kaiovbatista19@gmail.com.
 [2025-05-01 17:40:22] WARN: Usuário com credencial kaiovbatista1@gmail.com não encontrado.
 [2025-05-01 17:40:35] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
+[2025-05-01 19:51:39] WARN: Senha inválida para o usuário com credencial test123@gmail.com.
+[2025-05-01 19:53:52] INFO: Sucesso no login para usuário com credencial test123@gmail.com.
+[2025-05-01 19:54:56] INFO: Sucesso no login para usuário com credencial test123@gmail.com.
+[2025-05-01 19:56:07] WARN: Usuário com credencial eros@gmail.com não encontrado.
+[2025-05-01 19:56:24] WARN: Usuário com credencial eros@gmail.com não encontrado.
+[2025-05-01 19:56:55] WARN: Senha inválida para o usuário com credencial test123@gmail.com.
