@@ -225,8 +225,8 @@ exports.deleteTrainingDays = async (req, res) => {
 //Divisão de treinos 
 
 const validMuscleGroups = [
-  'Peito', 'Costas', 'Quadriceps', 'Posterior',
-  'Ombros', 'Bíceps', 'Tríceps', 'Abdômen'
+  'Peito', 'Costas', 'Quadriceps', 'Posterior da Coxa', 'Glúteos', 'Panturrilhas',
+  'Ombros', 'Bíceps', 'Tríceps', 'Abdômen', 'Trapézio', 'Antebraços'
 ];
 
 // Setar treinos da semana

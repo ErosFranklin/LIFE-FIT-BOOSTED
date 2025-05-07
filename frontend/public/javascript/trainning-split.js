@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     btnSplit.addEventListener("click", async function (event) {
         event.preventDefault();
 
-        // 1️⃣ Primeiro: capturar o split
+        
         const trainingSplit = split.value;
         console.log("Valor do split:", trainingSplit);
-        /*
+        
         try {
-            const responseSplit = await fetch(`http://localhost:10000/api/${userId}/create/training/split`, {
+            const responseSplit = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/split`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const dataSplit = await responseSplit.json();
             console.log("Split criado com sucesso:", dataSplit);
 
-            // Salvar no localStorage
+            
             localStorage.setItem("trainning-split", trainingSplit);
 
 
@@ -48,17 +48,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Erro ao criar split:", error);
             errorMessage.textContent = "Erro ao criar split de treino. Tente novamente mais tarde.";
             errorMessage.style.display = "block";
-            return; // se falhou aqui, não continua para enviar dias
+            return; 
         }
-        */
+        
 
-        // 2️⃣ Depois: capturar os dias selecionados
+   
         const checkboxes = document.querySelectorAll('input[name="training_day"]:checked');
         const selectedDays = Array.from(checkboxes).map(cb => cb.value);
 
         console.log("Dias selecionados:", selectedDays);
 
-        // Validação básica
+        
         const splitLimits = { ABC: 3, ABCD: 4, ABCDE: 5 };
 
         if (!splitLimits[trainingSplit]) {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const responseDays = await fetch(`http://localhost:10000/api/${userId}/create/training/days`, {
+            const responseDays = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/days`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

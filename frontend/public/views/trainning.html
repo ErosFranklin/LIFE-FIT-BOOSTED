@@ -104,6 +104,53 @@
         </form>
       </div>
       </div>
+
+      <div class="modal-trainning">
+        <div class="modal-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Adicione seu Exercício <i class="fa-solid fa-dumbbell"></i></h2>
+            <button id="close-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="add-exercise-form" class="add-exercise-form">
+            <label for="select-training-day">Selecione o dia de treino:</label>
+            <select id="select-training-day">
+              <option value="" disabled selected>Selecione um dia</option>
+            </select>
+            <div class="container-exercises">
+              <label>Nome do Exercicio:</label>
+            <input type="text" class="exercise-name" placeholder="ex: Supino Inclinado" required>
+            <label>Grupo Muscular:</label>
+            <select name="exercise-muscle-group" class="exercise-muscle-group">
+              <option value="" disabled selected>Selecione um item</option>
+              <option value="Costas">Costas</option>
+              <option value="Peito">Peito</option>
+              <option value="Quadriceps">Quadriceps</option>
+              <option value="Posterior">Posterior  da Coxa</option>
+              <option value="Glúteos">Glúteos</option>
+              <option value="Panturrilhas">Panturrilhas</option>
+              <option value="Ombros">Ombros</option>
+              <option value="Biceps">Biceps</option>
+              <option value="Triceps">Triceps</option>
+              <option value="Abdomen">Abdomen</option>
+              <option value="Trapézio">Trapézio </option>
+              <option value="Antebraço">Antebraços</option>
+            </select>
+            <label>Quantidade de Serie:</label>
+            <input type="number" class="series" name="series" min="1" value="5">
+            <div class="container-sub-exercicies">
+
+            </div>
+            </div>
+            <div class="more-container">
+              <button type="button" class="btn-more-exercise">+</button>
+            </div>
+            <div class="container-btn-trainning">
+              <span id="error_message"></span>
+              <button type="submit" id="btn-trainning">Adicionar</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </menu>
 <!--
