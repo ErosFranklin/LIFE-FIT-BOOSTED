@@ -62,8 +62,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
     }
 
     const exerciseGroups = document.querySelectorAll('.container-exercises, .container-sub-exercicies .exercise-group'); 
-
-    const rawExercises = [];
+    const grouped = {};
 
     exerciseGroups.forEach(group => {
         const exerciseName = group.querySelector(".exercise-name").value;
@@ -72,28 +71,15 @@ btnAddTrainning.addEventListener("click", async function (event) {
         console.log(exerciseName, muscleGroup, series);
 
         if (exerciseName && muscleGroup && series) {
-            rawExercises.push({
+            if (!grouped[muscleGroup]) {
+                grouped[muscleGroup] = [];
+            }
+            grouped[muscleGroup].push({
                 name: exerciseName,
-                muscle_group: muscleGroup,
                 series: series
             });
         }
     });
-
-    if (rawExercises.length === 0) {
-        alert('Adicione pelo menos um exercício antes de salvar.');
-        return;
-    }
-
-    const grouped = {};
-    rawExercises.forEach(ex => {
-        console.log(ex);
-        if (!grouped[ex.muscle_group]) {
-            grouped[ex.muscle_group] = [];
-        }
-        grouped[ex.muscle_group].push({ name: ex.name, series: ex.series });
-    });
-
     const groups = Object.entries(grouped).map(([muscleGroup, exercises]) => ({
         muscleArea: [muscleGroup],
         exercise: exercises
@@ -148,18 +134,18 @@ btnAddTrainning.addEventListener("click", async function (event) {
                 <label>Grupo Muscular:</label>
                 <select name="exercise-muscle-group" class="exercise-muscle-group">
                     <option value="" disabled selected>Selecione um item</option>
-                    <option value="Back">Costas</option>
-                    <option value="Chest">Peito</option>
-                    <option value="Quads">Quadriceps</option>
-                    <option value="Hamstrings">Posterior da Coxa</option>
-                    <option value="Glutes">Glúteos</option>
-                    <option value="Calves">Panturrilhas</option>
-                    <option value="Shoulders">Ombros</option>
+                    <option value="Costas">Costas</option>
+                    <option value="Peito">Peito</option>
+                    <option value="Quadriceps">Quadriceps</option>
+                    <option value="Posterior">Posterior  da Coxa</option>
+                    <option value="Glúteos">Glúteos</option>
+                    <option value="Panturrilhas">Panturrilhas</option>
+                    <option value="Ombros">Ombros</option>
                     <option value="Biceps">Biceps</option>
                     <option value="Triceps">Triceps</option>
-                    <option value="Abs">Abdomen</option>
-                    <option value="Traps">Trapézio</option>
-                    <option value="Forearms">Antebraços</option>
+                    <option value="Abdomen">Abdomen</option>
+                    <option value="Trapézio">Trapézio </option>
+                    <option value="Antebraço">Antebraços</option>
                 </select>
 
                 <label>Quantidade de Serie:</label>
