@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const result = await response.json();
             console.log(result);
             alert('cadastro realizado com sucesso!');
+            window.location.href = "../index.html";
 
         } catch (error) {
             console.error("Error:", error);
@@ -146,5 +147,5 @@ document.addEventListener("DOMContentLoaded", function () {
         var emailRegex =
           /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
         return emailRegex.test(email);
-      }
+    }
 });

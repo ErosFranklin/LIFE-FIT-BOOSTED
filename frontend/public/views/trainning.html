@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treinos</title>
+  <link rel="stylesheet" href="../style/style-trainning.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="side-menu">
+      <div class="image-menu">
+        <img src="../image//logo-0-name.png" alt="logo">
+      </div>
+      <ul>
+        <li class="menu-item">
+          <a href="../html/conta.html">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <span class="txt-link">Dados</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/grupo.html">
+            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
+            <span class="txt-link">Treinos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/contato.html">
+            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="txt-link">Dieta</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/creditos.html">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="txt-link">Contato</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/sobre.html">
+            <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="txt-link">Sobre</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <button id="logout">
+            <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+            <span class="txt-link">Sair</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <menu>
+    
+    <div class="trainning-header">
+      <h1>Treinos</h1>
+      <button id="btn-add-exercise">Adicionar Exercício</button>
+    </div>
+    <div class="trainning-container">
+      <div class="trainning-list" id="trainning-list">
+        <!-- Lista de treinos será gerada aqui -->
+      </div>
+    </div>
+    <div class="modal-split-trainning">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Adicione sua Split de Treino <i class="fa-solid fa-address-book"></i></h2>
+          <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="info-split">
+          <p>ABC - Treino de 3 dias por Semana</p>
+          <p>ABCD - Treino de 4 dias por Semana</p>
+          <p>ABCDE - Treino de 5 dias por Semana</p>
+        </div>
+        <form id="add-split-form">
+          <select name="split" id="split">
+            <option value="" disabled selected>Selecione sua Split</option>
+            <option value="ABC">ABC</option>
+            <option value="ABCD">ABCD</option>
+            <option value="ABCDE">ABCDE</option>
+          </select>
+        
+        <div class="container-trainning-days">
+          <h3>Quais os seus dias de treino?</h3>
+          <div id="form-training-days">
+            <label><input type="checkbox" name="training_day" value="segunda"> Segunda</label><br>
+            <label><input type="checkbox" name="training_day" value="terça"> Terça</label><br>
+            <label><input type="checkbox" name="training_day" value="quarta"> Quarta</label><br>
+            <label><input type="checkbox" name="training_day" value="quinta"> Quinta</label><br>
+            <label><input type="checkbox" name="training_day" value="sexta"> Sexta</label><br>
+            <label><input type="checkbox" name="training_day" value="sábado"> Sábado</label><br>
+            <label><input type="checkbox" name="training_day" value="domingo"> Domingo</label><br>
+          </div>
+        </div>
+          
+          <div class="container-btn-split">
+            <span id="error_message"></span>
+            <button type="submit" id="btn-split">Adicionar</button>
+          </div>
+        </form>
+      </div>
+      </div>
+
+      <div class="modal-trainning">
+        <div class="modal-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Adicione seu Exercício <i class="fa-solid fa-dumbbell"></i></h2>
+            <button id="close-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="add-exercise-form" class="add-exercise-form">
+            <label for="select-training-day">Selecione o dia de treino:</label>
+            <select id="select-training-day">
+              <option value="" disabled selected>Selecione um dia</option>
+            </select>
+            <div class="container-exercises">
+              <label>Nome do Exercicio:</label>
+            <input type="text" class="exercise-name" placeholder="ex: Supino Inclinado" required>
+            <label>Grupo Muscular:</label>
+            <select name="exercise-muscle-group" class="exercise-muscle-group">
+              <option value="" disabled selected>Selecione um item</option>
+              <option value="Costas">Costas</option>
+              <option value="Peito">Peito</option>
+              <option value="Quadriceps">Quadriceps</option>
+              <option value="Posterior">Posterior  da Coxa</option>
+              <option value="Glúteos">Glúteos</option>
+              <option value="Panturrilhas">Panturrilhas</option>
+              <option value="Ombros">Ombros</option>
+              <option value="Biceps">Biceps</option>
+              <option value="Triceps">Triceps</option>
+              <option value="Abdomen">Abdomen</option>
+              <option value="Trapézio">Trapézio </option>
+              <option value="Antebraço">Antebraços</option>
+            </select>
+            <label>Quantidade de Serie:</label>
+            <input type="number" class="series" name="series" min="1" value="5">
+            <div class="container-sub-exercicies">
+
+            </div>
+            </div>
+            <div class="more-container">
+              <button type="button" class="btn-more-exercise">+</button>
+            </div>
+            <div class="container-btn-trainning">
+              <span id="error_message"></span>
+              <button type="submit" id="btn-trainning">Adicionar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </menu>
+<!--
+   <h1>GIFs de Exercícios 💪</h1>
+  <div id="exercises"></div>
+
+  <script>
+    async function getExercises() {
+      const response = await fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/back?limit=10', {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'f4e318fb5amsh9fdfb335006b82ep1f3ef5jsn66df7f1b85d2', // 👈 Coloque sua chave da RapidAPI aqui
+          'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+        }
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      let container = document.getElementById('exercises');
+      container.innerHTML = '';
+
+      data.forEach(exercise => {
+        container.innerHTML += `
+          <div class="exercise">
+            <h3>${exercise.name}</h3>
+            <img src="${exercise.gifUrl}" alt="${exercise.name}">
+            <p>Músculo: ${exercise.target}</p>
+          </div>
+        `;
+      });
+    }
+
+    getExercises();
+  </script>
+
+-->
+  <script src="../javascript/trainning-split.js"></script>
+  <script src="../javascript/trainnings.js"></script>
+</body>
+</html>
