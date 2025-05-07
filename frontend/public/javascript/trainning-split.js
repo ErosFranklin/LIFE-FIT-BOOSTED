@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     console.log(splitTrainning)
 
-    if (!splitTrainning) {
+    if (splitTrainning === null) {
         modal.style.display = "flex";
         overlay.style.display = "flex";
     }
