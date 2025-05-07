@@ -61,7 +61,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
         return;
     }
 
-    const exerciseGroups = document.querySelectorAll('.container-exercises'); 
+    const exerciseGroups = document.querySelectorAll('.container-exercises, .container-sub-exercicies .exercise-group'); 
 
     const rawExercises = [];
 
