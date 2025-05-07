@@ -11,15 +11,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     console.log(splitTrainning)
 
-    if (splitTrainning === null) {
+    if (splitTrainning == null) {
         modal.style.display = "flex";
         overlay.style.display = "flex";
     }
 
     btnSplit.addEventListener("click", async function (event) {
         event.preventDefault();
-
-        
         const trainingSplit = split.value;
         console.log("Valor do split:", trainingSplit);
         
