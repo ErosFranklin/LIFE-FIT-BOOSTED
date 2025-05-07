@@ -49,8 +49,7 @@ const userSchema = new mongoose.Schema({
               type: [String],
               enum: [
                 'Peito', 'Costas', 'Quadriceps', 'Posterior da Coxa', 'Glúteos', 'Panturrilhas', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen', 'Trapézio', 'Antebraços'
-      ],
-              required: true
+              ]
             },
             exercise: {
               type: [
