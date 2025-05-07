@@ -36,12 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['ABC', 'ABCD', 'ABCDE'],
         default: null,
-        required: true
     },
     training_days: {
         type: [String], 
         default: [],
-        required: true
     },
     trainings_of_week: {
         type: Map,
@@ -49,8 +47,9 @@ const userSchema = new mongoose.Schema({
           new mongoose.Schema({
             muscleArea: {
               type: [String],
-              enum: ['Peito', 'Costas', 'Quadriceps', 'Posterior', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen'],
-              required: true
+              enum: [
+                'Peito', 'Costas', 'Quadriceps', 'Posterior da Coxa', 'Glúteos', 'Panturrilhas', 'Ombros', 'Bíceps', 'Tríceps', 'Abdômen', 'Trapézio', 'Antebraços'
+              ]
             },
             exercise: {
               type: [

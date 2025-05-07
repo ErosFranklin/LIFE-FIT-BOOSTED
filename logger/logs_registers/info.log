@@ -35,3 +35,139 @@
 [2025-05-06 16:34:20] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
 [2025-05-06 16:35:53] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
 [2025-05-06 17:18:20] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 17:51:40] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 18:05:07] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:05:07] INFO: Split definido com sucesso para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:11] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:11] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:06:16] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:06:16] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:09:29] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:09:29] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:10:19] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:10:19] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:11:21] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:11:21] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 18:14:09] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 18:14:09] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:12:30] INFO: Sucesso no login para usuário com credencial gfo2130626@email.com.
+[2025-05-06 19:42:51] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:42:51] WARN: Divisão inválida recebida: 
+[2025-05-06 19:43:31] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:43:31] WARN: Divisão inválida recebida: 
+[2025-05-06 19:46:49] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:46:49] WARN: Usuário 67fda36f813d3bac571366a2 já possui split definido.
+[2025-05-06 19:47:05] INFO: Solicitação de SET de split para usuário: 67fda36f813d3bac571366a2
+[2025-05-06 19:47:05] WARN: Divisão inválida recebida: 
+[2025-05-06 20:01:02] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:02:22] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:03:35] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:06:03] ERROR: Erro ao criar usuário: User validation failed: training_split: Path `training_split` is required.
+[2025-05-06 20:09:10] INFO: Usuário de nome Eros Franklin Soares Felix e email eros123@gmail.com criado com sucesso!
+[2025-05-06 20:10:00] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 20:10:15] INFO: Solicitação de SET de split para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:15] INFO: Split definido com sucesso para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:31] INFO: Solicitação de SET de split para usuário: 681a969544470942599fb226
+[2025-05-06 20:10:31] WARN: Usuário 681a969544470942599fb226 já possui split definido.
+[2025-05-06 20:14:52] INFO: SET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 20:14:52] INFO: Dias de treino definidos para usuário 681a969544470942599fb226: segunda,quarta,sexta
+[2025-05-06 20:18:19] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 21:43:26] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 21:44:38] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 22:37:15] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:37:53] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:38:34] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:38:37] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:39:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:41:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:41:25] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:46:18] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:46:22] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:47:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:16] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:17] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:21] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:47] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:50] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:48:52] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:49:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:49:49] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:49:51] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:49:53] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:49:54] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:50:24] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:50:29] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:50:44] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:16] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:20] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:21] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:25] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:51:38] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:52:24] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:54:13] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:54:52] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 22:55:05] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 22:58:36] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:02:45] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:03:30] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:04:04] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:05:27] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:07:54] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:08:33] INFO: SET treino do dia 'quarta' para usuário: 681a969544470942599fb226
+[2025-05-06 23:09:16] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:11:08] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:11:42] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:12:51] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:14:08] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:16:02] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:19:51] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:19:56] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:24:09] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:24:17] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:24:17] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios., trainings_of_week.segunda.0.muscleArea.0: `Chest` is not a valid enum value for path `muscleArea.0`.
+[2025-05-06 23:25:32] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:29:06] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 23:29:23] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:30:38] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:35:08] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
+[2025-05-06 23:35:25] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:35:43] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:35:43] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:40:11] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:40:36] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:41:00] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:41:00] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:46:56] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:47:08] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:47:08] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:47:20] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:47:20] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:47:45] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:47:45] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:50:24] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:50:36] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:50:47] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:50:47] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:54:10] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:54:24] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:54:24] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-06 23:55:51] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-06 23:56:18] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-06 23:56:18] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-07 00:00:34] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:00:36] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:00:59] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-07 00:00:59] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios., trainings_of_week.segunda.0.muscleArea.0: `Chest` is not a valid enum value for path `muscleArea.0`.
+[2025-05-07 00:04:31] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:04:36] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:04:58] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-07 00:04:58] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios., trainings_of_week.segunda.0.muscleArea.0: `Chest` is not a valid enum value for path `muscleArea.0`.
+[2025-05-07 00:06:03] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:06:14] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-07 00:06:14] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-07 00:06:27] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-07 00:06:27] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-07 00:08:47] INFO: GET training_days para usuário: 681a969544470942599fb226
+[2025-05-07 00:09:03] INFO: SET treino do dia 'segunda' para usuário: 681a969544470942599fb226
+[2025-05-07 00:09:03] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.

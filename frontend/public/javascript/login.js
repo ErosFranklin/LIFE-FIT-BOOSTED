@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("http://localhost:10000/api/user/login", {
+            const response = await fetch("https://life-fit-boosted.onrender.com/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 localStorage.setItem("token-decode", decode);
                 localStorage.setItem("trainning-split", decode.training_split);
             }
-            window.location.href = "../public/views/home-page.html"; 
+            window.location.href = "../public/views/trainning.html"; 
 
         } catch (error) {
             console.error("Erro ao fazer login:", error);

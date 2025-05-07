@@ -6,6 +6,7 @@
   <title>Treinos</title>
   <link rel="stylesheet" href="../style/style-trainning.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </head>
 <body>
   <header>
@@ -54,11 +55,12 @@
     </nav>
   </header>
   <menu>
+    
+    <div class="trainning-header">
+      <h1>Treinos</h1>
+      <button id="btn-add-exercise">Adicionar Exercício</button>
+    </div>
     <div class="trainning-container">
-      <div class="trainning-header">
-        <h1>Treinos</h1>
-        <button id="add-exercise">Adicionar Exercício</button>
-      </div>
       <div class="trainning-list" id="trainning-list">
         <!-- Lista de treinos será gerada aqui -->
       </div>
@@ -81,11 +83,73 @@
             <option value="ABCD">ABCD</option>
             <option value="ABCDE">ABCDE</option>
           </select>
+        
+        <div class="container-trainning-days">
+          <h3>Quais os seus dias de treino?</h3>
+          <div id="form-training-days">
+            <label><input type="checkbox" name="training_day" value="segunda"> Segunda</label><br>
+            <label><input type="checkbox" name="training_day" value="terça"> Terça</label><br>
+            <label><input type="checkbox" name="training_day" value="quarta"> Quarta</label><br>
+            <label><input type="checkbox" name="training_day" value="quinta"> Quinta</label><br>
+            <label><input type="checkbox" name="training_day" value="sexta"> Sexta</label><br>
+            <label><input type="checkbox" name="training_day" value="sábado"> Sábado</label><br>
+            <label><input type="checkbox" name="training_day" value="domingo"> Domingo</label><br>
+          </div>
+        </div>
+          
           <div class="container-btn-split">
             <span id="error_message"></span>
             <button type="submit" id="btn-split">Adicionar</button>
           </div>
         </form>
+      </div>
+      </div>
+
+      <div class="modal-trainning">
+        <div class="modal-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Adicione seu Exercício <i class="fa-solid fa-dumbbell"></i></h2>
+            <button id="close-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="add-exercise-form" class="add-exercise-form">
+            <label for="select-training-day">Selecione o dia de treino:</label>
+            <select id="select-training-day">
+              <option value="" disabled selected>Selecione um dia</option>
+            </select>
+            <div class="container-exercises">
+              <label>Nome do Exercicio:</label>
+            <input type="text" class="exercise-name" placeholder="ex: Supino Inclinado" required>
+            <label>Grupo Muscular:</label>
+            <select name="exercise-muscle-group" class="exercise-muscle-group">
+              <option value="" disabled selected>Selecione um item</option>
+              <option value="Costas">Costas</option>
+              <option value="Peito">Peito</option>
+              <option value="Quadriceps">Quadriceps</option>
+              <option value="Posterior">Posterior  da Coxa</option>
+              <option value="Glúteos">Glúteos</option>
+              <option value="Panturrilhas">Panturrilhas</option>
+              <option value="Ombros">Ombros</option>
+              <option value="Biceps">Biceps</option>
+              <option value="Triceps">Triceps</option>
+              <option value="Abdomen">Abdomen</option>
+              <option value="Trapézio">Trapézio </option>
+              <option value="Antebraço">Antebraços</option>
+            </select>
+            <label>Quantidade de Serie:</label>
+            <input type="number" class="series" name="series" min="1" value="5">
+            <div class="container-sub-exercicies">
+
+            </div>
+            </div>
+            <div class="more-container">
+              <button type="button" class="btn-more-exercise">+</button>
+            </div>
+            <div class="container-btn-trainning">
+              <span id="error_message"></span>
+              <button type="submit" id="btn-trainning">Adicionar</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </menu>
@@ -125,5 +189,6 @@
 
 -->
   <script src="../javascript/trainning-split.js"></script>
+  <script src="../javascript/trainnings.js"></script>
 </body>
 </html>
