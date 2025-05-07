@@ -232,7 +232,7 @@ body {
 #add-split-form .container-btn-split #btn-split:hover{
     background-position: right center;
 }
-.container-btn-split #error_message{
+.container-btn-split .error_message{
     color: red;
     font-size: 12px;
     font-weight: normal;
@@ -417,7 +417,7 @@ body {
     padding: 10px 0px;
     margin-top:20px;
 }
-.container-btn-trainning #btn-exercise{
+.container-btn-trainning #btn-trainning{
     border:none;
     background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
     padding:10px;
@@ -432,7 +432,7 @@ body {
     background-position: left center;
     transition: background-position .2s ease-in-out;
 }
-.container-btn-trainning #btn-exercise:hover{
+.container-btn-trainning #btn-trainning:hover{
     background-position: right center;
 }
 

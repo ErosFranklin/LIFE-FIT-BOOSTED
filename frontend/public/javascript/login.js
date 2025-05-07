@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 localStorage.setItem("token-decode", decode);
                 localStorage.setItem("trainning-split", decode.training_split);
             }
-            window.location.href = "../public/views/trainning.html"; 
+            window.location.href = "/views/trainning.html"; 
 
         } catch (error) {
             console.error("Erro ao fazer login:", error);
