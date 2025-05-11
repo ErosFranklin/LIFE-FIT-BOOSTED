@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treinos</title>
   <link rel="stylesheet" href="../style/style-trainning.css">
+  <link rel="stylesheet" href="../style/style-spinner.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </head>
@@ -16,31 +17,31 @@
       </div>
       <ul>
         <li class="menu-item">
-          <a href="../html/conta.html">
+          <a href="../views/conta.html">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <span class="txt-link">Dados</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/grupo.html">
+          <a href="../views/trainning.html">
             <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
             <span class="txt-link">Treinos</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/contato.html">
+          <a href="../views/contato.html">
             <span class="icon"><i class="fa-solid fa-utensils"></i></span>
             <span class="txt-link">Dieta</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/creditos.html">
+          <a href="../views/contato.html">
             <span class="icon"><i class="fa-solid fa-phone"></i></span>
-            <span class="txt-link">Contato</span>
+            <span class="txt-link">Contatos</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/sobre.html">
+          <a href="../views/sobre.html">
             <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
             <span class="txt-link">Sobre</span>
           </a>
@@ -55,13 +56,18 @@
     </nav>
   </header>
   <menu>
-    
+    <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
     <div class="trainning-header">
-      <h1>Treinos</h1>
-      <button id="btn-add-exercise">Adicionar Exercício</button>
+      <h1>Treinos <i class="fa-solid fa-dumbbell"></i></h1>
+      <button id="btn-add-exercise">Adicionar Treino</button>
     </div>
     <div class="trainning-container">
       <div class="trainning-list" id="trainning-list">
+        <span class="error_message"></span>
         <!-- Lista de treinos será gerada aqui -->
       </div>
     </div>
@@ -98,7 +104,7 @@
         </div>
           
           <div class="container-btn-split">
-            <span id="error_message"></span>
+            <span class="error_message"></span>
             <button type="submit" id="btn-split">Adicionar</button>
           </div>
         </form>
@@ -107,7 +113,7 @@
       <div class="modal-trainning">
         <div class="modal-content-trainning">
           <div class="modal-header-trainning">
-            <h2>Adicione seu Exercício <i class="fa-solid fa-dumbbell"></i></h2>
+            <h2>Adicione seu Treino <i class="fa-solid fa-dumbbell"></i></h2>
             <button id="close-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
           </div>
           <form id="add-exercise-form" class="add-exercise-form">
@@ -136,15 +142,15 @@
             </select>
             <label>Quantidade de Serie:</label>
             <input type="number" class="series" name="series" min="1" value="5">
+            <label>Equipamento:</label>
+            <input type="text" class="equipment" name="equipment" placeholder="ex: Halteres" required>
             <div class="container-sub-exercicies">
-
-            </div>
             </div>
             <div class="more-container">
               <button type="button" class="btn-more-exercise">+</button>
             </div>
             <div class="container-btn-trainning">
-              <span class="error_message"></span>
+              <span class="error_message_modal">aaaa</span>
               <button type="submit" id="btn-trainning">Adicionar</button>
             </div>
           </form>

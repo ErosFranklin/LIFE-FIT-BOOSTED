@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("token");
     const splitTrainning = localStorage.getItem("trainning-split");
     const split = document.querySelector("#split");
-    const errorMessage = document.querySelector("#error_message");
+    const errorMessage = document.querySelector(".error_message");
     const btnSplit = document.querySelector("#btn-split");
 
     console.log(splitTrainning)
 
-    if (splitTrainning == null) {
+    if (!splitTrainning || splitTrainning === "null") {
         modal.style.display = "flex";
         overlay.style.display = "flex";
     }
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Valor do split:", trainingSplit);
         
         try {
-            const responseSplit = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/split`, {
+            const responseSplit = await fetch(`http://localhost:10000/api/${userId}/create/training/split`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const responseDays = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/days`, {
+            const responseDays = await fetch(`http://localhost:10000/api/${userId}/create/training/days`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
