@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+:root {
+    --background-color: rgba(63, 63, 63, 1);
+    --background-color-2: rgba(53, 53, 53, 1);
+    --background-color-3: rgba(39, 39, 39, 1);
+    --text-color: #ffffff;
+    --important-color: rgba(0, 208, 255, 1);
+    --important-color-2: rgba(0, 125, 153, 1);
+    --border-color: rgba(180, 180, 180, 1);
+    --input-background-color: rgba(66, 66, 66, 1);
+}
+body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: start; 
+    padding: 40px 0; 
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+.container-user-data{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+}
+.container-user-data .container-header-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    height: auto;
+}
+.container-user-data .container-header-data h1{
+    font-size: 2rem;
+    color: var(--text-color);
+}
+.container-user-data .container-header-data .btn-editing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
+    padding:10px;
+    min-width: 20%;
+    color:var(--text-color);
+    font-weight: bold;
+    font-size:15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 4px #00000025;
+    cursor: pointer;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position .2s ease-in-out;
+}
+.container-user-data .container-header-data .btn-editing:hover{
+    background-position: right center;
+}
+.container-user-data .container-header-data .btn-editing a{
+    text-decoration: none;
+    color:var(--text-color);
+}
+
+.container-user-datas{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: auto;
+    margin-top: 3%;
+}
+.container-user-datas .container-grid-user-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.container-user-datas .container-grid-user-data .user-data{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.container-user-datas .container-grid-user-data .user-data .data-name-email{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color-3);
+    width: 80%;
+    padding:20px;
+    border-radius:10px 10px 0px 0px;
+}
+.container-user-datas .container-grid-user-data .user-data .data-name-email .data-name .name-user{
+    position: relative;
+    font-size:1rem;
+    font-weight: bolder;
+    color:var(--text-color);
+}
+.container-user-datas .container-grid-user-data .user-data .data-name-email .data-email .email-user{
+    font-size:0.8rem;
+    font-weight: normal;
+    color:var(--border-color);
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color-2);
+    width: 80%;
+    padding:20px 0px;
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user .info-user{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    width: 80%;
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user .info-user i{
+    background-color: var(--background-color-3);
+    color:var(--important-color-2);
+    padding:15px;
+    border-radius: 100%;
+    font-size:1rem;
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user .info-user .value-user{
+    margin-left:2%;
+    width: 100%;
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user .info-user p{
+    color:var(--border-color);
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+.container-user-datas .container-grid-user-data .user-data .main-info-user .info-user h4{
+    color:var(--text-color);
+    font-size: 1rem;
+    font-weight: bolder;
+}
+.container-user-datas .container-grid-user-data .user-data .btns-container-user{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    border-top: 1px inset var(--border-color);
+    border-radius: 0px 0px 10px 10px;
+    background-color: var(--background-color-2);
+}
+.container-user-datas .container-grid-user-data .user-data .btns-container-user #logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border:none;
+    color:red;
+    font-size:0.9rem;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.container-user-datas .container-grid-user-data .user-data .btns-container-user #logout:hover{
+    color:rgba(255, 0, 0, 0.598);
+}
+
+.container-user-datas .container-grid-user-data .user-data .btns-container-user #logout i{
+    margin-right:10px;
+}
+
+.container-user-datas .container-grid-user-data .user-data-personal {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding:10px;
+    background-color: var(--background-color-2);
+    border-radius: 15px;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users span{
+    color:var(--important-color);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-shadow: 1px 1px var(--important-color-2);
+
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users span i{
+    margin-right: 10px;
+}

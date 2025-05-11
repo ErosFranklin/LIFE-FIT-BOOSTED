@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-user-data.css">
+    <link rel="stylesheet" href="../style/style-spinner.css">
+    <link rel="stylesheet" href="../style/style-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="side-menu">
+      <div class="image-menu">
+        <img src="../image/logo-0-name.png" alt="logo">
+      </div>
+      <ul>
+        <li class="menu-item">
+          <a href="../views/conta.html">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <span class="txt-link">Dados</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/trainning.html">
+            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
+            <span class="txt-link">Treinos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="txt-link">Dieta</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="txt-link">Contatos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/sobre.html">
+            <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="txt-link">Sobre</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <button id="logout">
+            <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+            <span class="txt-link">Sair</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="container-user-data">
+            <div class="container-header-data">
+                <h1>Meu Perfil</h1>
+                <span class="btn-editing"><a href="../views/user-editing-data"><i class="icon fa-solid fa-pencil"></i>Editar Perfil</a></span>
+            </div>
+            <div class="container-user-datas">
+                <div class="container-grid-user-data">
+                    <div class="user-data">
+                        <div class="data-name-email">
+                            <div class="photo-user">
+
+                            </div>
+                            <div class="data-name">
+                                <span class="name-user">Eros Franklin Soares Felix</span>
+                            </div>
+                            <div class="data-email">
+                                <span class="email-user">eros123@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="main-info-user">
+                            <div class="info-user">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <span class="value-user">
+                                    <p>Split Treino</p>
+                                    <h4>ABC</h4>
+                                </span>
+                            </div>   
+                        </div>
+                        <div class="btns-container-user">
+                            <button id="logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span class="txt-link">Sair</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="user-data-personal">
+                        <div class="info-users">
+                            <span><i class="fa-solid fa-user"></i><h4>Informacoes Pessoais</h1></span>
+                            <div class="infos" id="infos">
+                            </div>
+                        </div>
+                        <div class="info-physic">
+
+                        </div>
+                        <div class="info-trainning">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+</html>
