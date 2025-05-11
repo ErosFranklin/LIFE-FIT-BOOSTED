@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const btnAddExercise = document.getElementById("btn-add-exercise");
     const btnAddTrainning = document.getElementById("btn-trainning");
-    const trainningContainer = document.querySelector(".trainning-container");
-    
+    const trainningContainer = document.querySelector(".trainning-list");
+    const errorMessage = document.querySelector(".error_message");
+    const errorMessageModal = document.querySelector(".error_message_modal");
     const containerExercises = document.querySelector('.container-sub-exercicies');
     const overlay = document.querySelector(".modal-trainning");
     const modal = document.querySelector(".modal-content-trainning"); 
@@ -10,10 +11,87 @@ document.addEventListener("DOMContentLoaded", async function () {
     const btnMoreExercise = document.querySelectorAll(".btn-more-exercise");
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
+    const spinner = document.querySelector(".container-spinner");
+
+    const trainningsDaysData = await getDaysTrainninhg(userId);
+    const trainningsDays = trainningsDaysData.training_days
+    getTrainning(userId, trainningContainer, trainningsDays)
+
+    async function getTrainning(userId, trainningContainer, trainningsDays) {
+        spinner.style.display = "block";
+        try{
+            const response = await fetch(`http://localhost:10000/api/${userId}/training/week`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar treinos.");
+            }
+
+            const data = await response.json();
+            console.log("Treinos:", data);
+            errorMessage.style.display = "none";
+            trainningsDays.forEach(day => {
+                const dayContainer = document.createElement('div');
+                dayContainer.classList.add('day-tranning-day');
+
+                const dayName = capitalizeFirstLetter(day);
+
+                dayContainer.innerHTML = `
+                    <h3>${dayName}</h3>
+                    <div class="day-tranning">
+                        <div class="day-tranning-exercises"></div>
+                    </div>
+                `;
+
+                const exercisesContainer = dayContainer.querySelector('.day-tranning-exercises');
+
+                if (data[day] && data[day].length > 0) {
+                    data[day].forEach(group => {
+                        const muscleArea = group.muscleArea.join(', ');
+                        const groupContainer = document.createElement('div');
+                        groupContainer.classList.add('exercise-group');
+
+                        let exercisesHTML = '';
+                        group.exercise.forEach(ex => {
+                            exercisesHTML += `
+                            <li>Exercício: <span>${ex.name}</span></li>
+                            <li>Quantidade de Séries: <span>${ex.series}</span></li>
+                            `;
+                        });
+
+                        groupContainer.innerHTML = `
+                            <h4>Grupo Muscular: ${muscleArea}</h4>
+                            <ul>${exercisesHTML}</ul>
+                        `;
+
+                        exercisesContainer.appendChild(groupContainer);
+                    });
+                } else {
+                    exercisesContainer.innerHTML = '<p>Sem treinos cadastrados para este dia.</p>';
+                }
+
+                trainningContainer.appendChild(dayContainer);
+});
+            return data;
+        }catch (error) {
+            console.error("Erro ao buscar treinos:", error);
+            spinner.style.display = "none";
+            errorMessage.textContent = "Erro ao buscar treinos. Tente novamente mais tarde.";
+            errorMessage.style.display = "block";
+        }finally {
+            spinner.style.display = "none";
+        }
+
+    }
 
     async function getDaysTrainninhg(userId) {
         try {
-            const responseData = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/training/days`, {
+            const responseData = await fetch(`http://localhost:10000/api/${userId}/training/days`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -68,15 +146,17 @@ btnAddTrainning.addEventListener("click", async function (event) {
         const exerciseName = group.querySelector(".exercise-name").value;
         const muscleGroup = group.querySelector(".exercise-muscle-group").value;
         const series = parseInt(group.querySelector("input[name='series']").value);
-        console.log(exerciseName, muscleGroup, series);
+        const equipment = group.querySelector(".equipment").value;
+        console.log(exerciseName, muscleGroup, series, equipment);
 
-        if (exerciseName && muscleGroup && series) {
+        if (exerciseName && muscleGroup && series && equipment) {
             if (!grouped[muscleGroup]) {
                 grouped[muscleGroup] = [];
             }
             grouped[muscleGroup].push({
                 name: exerciseName,
-                series: series
+                series: series,
+                equipment: equipment
             });
         }
     });
@@ -92,7 +172,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
     console.log("Grupos enviados:", JSON.stringify(groups, null, 2));
 
     try {
-        const response = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/${day}`, {
+        const response = await fetch(`http://localhost:10000/api/${userId}/create/training/${day}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -109,10 +189,12 @@ btnAddTrainning.addEventListener("click", async function (event) {
             const data = await response.json();
             console.log("Treino salvo:", data);
         } else {
-            alert('Erro ao salvar treino. Verifique os dados.');
+            errorMessageModal.style.display = "block";
+            errorMessageModal.textContent = "Deve conter de 2 a 5 exercicios do mesmo grupo muscular.";
         }
     } catch (error) {
         console.error("Erro ao criar treino:", error);
+        
     }
 });
 
@@ -150,6 +232,9 @@ btnAddTrainning.addEventListener("click", async function (event) {
 
                 <label>Quantidade de Serie:</label>
                 <input type="number" class="series" name="series" min="1" value="5">
+
+                <label>Equipamento:</label>
+                <input type="text" class="equipment" name="equipment" placeholder="ex: Halteres" required>
             `;
 
             containerExercises.appendChild(newGroup);

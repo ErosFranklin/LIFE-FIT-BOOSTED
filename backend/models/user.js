@@ -55,7 +55,8 @@ const userSchema = new mongoose.Schema({
               type: [
                 {
                   name: { type: String, required: true },
-                  series: { type: Number, required: true }
+                  series: { type: Number, required: true },
+                  equipment: { type: String, required: true }
                 }
               ],
               validate: {
