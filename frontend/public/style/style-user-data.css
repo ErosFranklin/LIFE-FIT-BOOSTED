@@ -81,7 +81,6 @@ body {
 .container-user-datas .container-grid-user-data{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
 .container-user-datas .container-grid-user-data .user-data{
@@ -189,19 +188,95 @@ body {
 }
 .container-user-datas .container-grid-user-data .user-data-personal .info-users{
     display:flex;
-    justify-content: left;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    padding:10px;
 }
 .container-user-datas .container-grid-user-data .user-data-personal .info-users span{
-    color:var(--important-color);
     display: flex;
     align-items: center;
     width: 100%;
-    text-shadow: 1px 1px var(--important-color-2);
+    color:var(--text-color)
 
 }
 .container-user-datas .container-grid-user-data .user-data-personal .info-users span i{
     margin-right: 10px;
+    color:var(--important-color);
 }
+.container-user-datas .container-grid-user-data .user-data-personal .info-users .infos{
+    width: 100%;
+    padding:10px 0px;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users .infos .info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom:10px;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users .infos .info span{
+    font-size:0.8rem;
+    font-weight: normal;
+    color:var(--border-color)
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users .infos .info .info-component p{
+    font-size:0.9rem;
+    font-weight: lighter;
+    color:var(--text-color)
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-users .infos .info .info-component i{
+    color:var(--border-color);
+    font-size:0.8rem;
+    padding-right:10px;
+}
+
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical, .user-data-personal .info-trainning{
+    display:flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+    padding:15px;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical span, .user-data-personal .info-trainning span{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color:var(--text-color)
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical span i, .user-data-personal .info-trainning span i{
+    margin-right:10px;
+    color:var(--important-color)
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top:10px;
+}
+.user-data-personal .info-trainning .infos{
+    padding-top:10px;
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info span, .user-data-personal .info-trainning .infos .info span{
+    font-size:0.8rem;
+    font-weight: normal;
+    color:var(--border-color);
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component p, .user-data-personal .info-trainning .infos .info .info-component p{
+    font-size:0.9rem;
+    font-weight: lighter;
+    color:var(--text-color);
+    
+}
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component i, .user-data-personal .info-trainning .infos .info .info-component i{
+    color:var(--border-color);
+    font-size:0.8rem;
+    padding-right:10px;
+}
+.user-data-personal .info-trainning .infos .info #sobre-split{
+    font-size:0.9rem;
+    font-weight: lighter;
+    color:var(--border-color);
+    background-color: var(--background-color-3);
+    padding:10px;
+    border-radius: 10px;
+    margin-top:10px;
+ }
