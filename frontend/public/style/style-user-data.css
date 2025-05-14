@@ -272,7 +272,7 @@ body {
     padding-right:10px;
 }
 .user-data-personal .info-trainning .infos .info #sobre-split{
-    font-size:0.9rem;
+    font-size:0.7rem;
     font-weight: lighter;
     color:var(--border-color);
     background-color: var(--background-color-3);
