@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,800;0,900;1,500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+:root {
+    --background-color: rgba(63, 63, 63, 1);
+    --background-color-2: rgba(53, 53, 53, 1);
+    --background-color-3: rgba(39, 39, 39, 1);
+    --text-color: #ffffff;
+    --important-color: rgba(0, 208, 255, 1);
+    --important-color-2: rgba(0, 125, 153, 1);
+    --border-color: rgba(180, 180, 180, 1);
+    --input-background-color: rgba(66, 66, 66, 1);
+}
+body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: start; 
+    padding: 40px 0; 
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+.container-user-data{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+}
+.container-user-data .container-header-data{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 60%;
+}
+.container-user-data .container-header-data h1{
+    padding: 10px;
+    color:var(--text-color);
+}
+.container-user-data .container-header-data h1 a{
+    text-decoration: none;
+    padding-right: 10px;
+    color:var(--border-color);
+}
+.container-user-data .container-user-datas{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
+.container-user-datas .info-users,.info-physical, .info-trainning{
+    display: flex;
+    align-items: left;
+    justify-content:center;
+    flex-direction: column;
+    background-color: var(--background-color-2);
+    padding:15px;
+    border-radius:10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.container-user-datas .info-users span, .info-physical span, .info-trainning span, .header-security span{
+    display:flex;
+    align-items: center;
+    padding-bottom:10px;
+}
+.container-user-datas .info-users span i , .info-physical span i, .info-trainning span i, .header-security span i{
+    color:var(--important-color);
+    padding-right: 10px;
+}
+.container-user-datas .info-users span h4, .info-physical span h4, .info-trainning span h4, .header-security span h4{
+    color:var(--text-color);
+}
+
+.container-user-datas .info-users .infos .info, .info-physical .infos .info, .info-trainning .infos .info, .header-security .infos .info{
+    width: 100%;
+    position:relative;
+    margin:10px 5px;
+    transition: all 0.2s ease-in-out;
+}
+.container-user-datas .info-users .infos .info span, .info-physical .infos .info span, .info-trainning .infos .info span, .header-security .infos .info span, .infos-security .info span{
+    color:var(--text-color);
+    font-size: 12px;
+}
+.container-user-datas .info-users .infos .info .info-component, .info-physical .infos .info .info-component, .info-trainning .infos .info .info-component, .infos-security .info .info-component{
+    max-width: 95%;
+    background:var(--input-background-color);
+    padding:2px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+.container-user-datas .info-users .infos .info .info-component i, .info-physical .infos .info .info-component i, .info-trainning .infos .info .info-component i, .infos-security .info .info-component i{
+    font-size:12px;
+    color: var(--border-color);
+    padding:5px;
+}
+.info-trainning .infos .info .info-component select{
+    width: 100%;
+    border-radius: 5px;
+    padding:5px;
+    border: 1px solid var(--geral);
+    background-color: transparent;
+    color:var(--border-color);
+} 
+.info-trainning .infos .info .info-component select:focus{
+    outline: none;
+    background-color: var(--background-color-2);
+    color: var(--important-color);
+}
+.container-user-datas .info-users .infos .info .info-component input, .info-physical .infos .info .info-component input, .infos-security .info .info-component input{    
+    width: 100%;
+    padding:5px;
+    background: transparent;
+    border:none;
+    color:var(--border-color);
+}
+.container-user-datas .info-users .infos .info .info-component:focus-within, .info-physical .infos .info .info-component:focus-within, .info-trainning .infos .info .info-component:focus-within, .infos-security .info .info-component:focus-within{
+    outline: none;
+    border: 1px solid var(--important-color);
+    box-shadow: 0 0 5px var(--important-color);
+    color:var(--important-color);
+}
+.container-user-datas .info-users .infos .info .info-component:focus-within i, .info-physical .infos .info .info-component:focus-within i, .info-trainning .infos .info .info-component:focus-within i, .infos-security .info .info-component:focus-within i{
+    color: var(--important-color);
+}
+.container-user-datas .info-users .infos .info .info-component input:focus, .info-physical .infos .info .info-component input:focus, .infos-security .info .info-component input:focus{
+    outline: none;
+    border:none;
+}
+
+.info-physical .infos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.info-security{
+    display: flex;
+    align-items: left;
+    justify-content:center;
+    flex-direction: column;
+    background-color: var(--background-color-2);
+    padding:15px;
+    border-radius:10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.info-security .header-security{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.info-security .header-security button{
+    background-color: transparent;
+    border:none;
+    color:var(--important-color);
+    padding:10px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.info-security .header-security button:hover{
+    color:var(--important-color-2);
+}
+.info-security .infos-security{
+    display: none;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    height: auto;
+}
+.infos-security .info{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    position:relative;
+    margin:10px 5px;
+    transition: all 0.2s ease-in-out;
+}
+.infos-security .info .info-component{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Dados</title>
+    <link rel="stylesheet" href="../style/style-editing-user-data.css">
     <link rel="stylesheet" href="../style/style-spinner.css">
     <link rel="stylesheet" href="../style/style-menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,8 +16,6 @@
                 <h1><a href="../views/user-data.html"><i class="fa-solid fa-chevron-left"></i></a>Editar Perfil</h1>
             </div>
             <div class="container-user-datas">
-                <div class="container-grid-user-data">
-                    <div class="user-data-personal">
                         <div class="info-users">
                             <span><i class="fa-solid fa-user"></i><h4>Informações Pessoais</h1></span>
                             <div class="infos" id="infos">
@@ -86,24 +85,27 @@
                                 </div>
                               </div>
                         </div>
-                        <div class="info-secutiry">
-                            <span><i class="fa-solid fa-dumbbell"></i><h4>Informações de Seguranca</h1></span>
+                        <div class="info-security">
+                            <div class="header-security">
+                                <span><i class="fa-solid fa-shield-halved"></i><h4>Informações de Seguranca</h1></span>
+                                <button id="btn-security" onclick="viewModal()">Alterar</button>
+                            </div>
                             <div class="infos-security" id="infos-security">
-                                <div class="info-security">
+                                <div class="info">
                                     <span>Senha Atual:</span>
                                     <span class="info-component">
                                         <i class="fa-solid fa-ruler-vertical"></i>
                                         <input type="number" class="height-user" placeholder="Altura">
                                     </span>
                                 </div>
-                                <div class="info-security">
+                                <div class="info">
                                     <span>Nova Senha:</span>
                                     <span class="info-component">
                                         <i class="fa-solid fa-ruler-vertical"></i>
                                         <input type="number" class="height-user" placeholder="Altura">
                                     </span>
                                 </div>
-                                <div class="info-security">
+                                <div class="info">
                                     <span>Confirmar Nova Senha:</span>
                                     <span class="info-component">
                                         <i class="fa-solid fa-ruler-vertical"></i>
@@ -112,12 +114,10 @@
                                 </div>
                               </div>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
 
     </main>
-    
+    <script src="../javascript/modal-password.js"></script>
 </body>
 </html>
