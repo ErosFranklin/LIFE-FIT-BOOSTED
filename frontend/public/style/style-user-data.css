@@ -230,20 +230,23 @@ body {
     padding-right:10px;
 }
 
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical, .user-data-personal .info-trainning{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical,
+.user-data-personal .info-trainning{
     display:flex;
     justify-content: left;
     flex-direction: column;
     width: 100%;
     padding:15px;
 }
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical span, .user-data-personal .info-trainning span{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical span,
+ .user-data-personal .info-trainning span{
     display: flex;
     align-items: center;
     width: 100%;
     color:var(--text-color)
 }
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical span i, .user-data-personal .info-trainning span i{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical span i,
+ .user-data-personal .info-trainning span i{
     margin-right:10px;
     color:var(--important-color)
 }
@@ -255,18 +258,21 @@ body {
 .user-data-personal .info-trainning .infos{
     padding-top:10px;
 }
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info span, .user-data-personal .info-trainning .infos .info span{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info span,
+.user-data-personal .info-trainning .infos .info span{
     font-size:0.8rem;
     font-weight: normal;
     color:var(--border-color);
 }
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component p, .user-data-personal .info-trainning .infos .info .info-component p{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component p,
+.user-data-personal .info-trainning .infos .info .info-component p{
     font-size:0.9rem;
     font-weight: lighter;
     color:var(--text-color);
     
 }
-.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component i, .user-data-personal .info-trainning .infos .info .info-component i{
+.container-user-datas .container-grid-user-data .user-data-personal .info-physical .infos .info .info-component i,
+.user-data-personal .info-trainning .infos .info .info-component i{
     color:var(--border-color);
     font-size:0.8rem;
     padding-right:10px;

@@ -21,7 +21,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: start; 
-    padding: 40px 0; 
+    padding: 20px 0; 
     background-color: var(--background-color);
     overflow-x: hidden;
 }
@@ -32,6 +32,7 @@ body {
     flex-direction: column;
     width: 100vw;
     height: auto;
+    
 }
 .container-user-data .container-header-data{
     display: flex;
@@ -55,7 +56,9 @@ body {
     flex-direction: column;
     width: 50%;
 }
-.container-user-datas .info-users,.info-physical, .info-trainning{
+.container-user-datas .info-users,
+.info-physical, 
+.info-trainning{
     display: flex;
     align-items: left;
     justify-content:center;
@@ -66,37 +69,59 @@ body {
     margin-bottom: 10px;
     width: 100%;
 }
-.container-user-datas .info-users span, .info-physical span, .info-trainning span, .header-security span{
+.container-user-datas .info-users span,
+.info-physical span,
+.info-trainning span,
+.header-security span{
     display:flex;
     align-items: center;
     padding-bottom:10px;
 }
-.container-user-datas .info-users span i , .info-physical span i, .info-trainning span i, .header-security span i{
+.container-user-datas .info-users span i ,
+.info-physical span i,
+.info-trainning span i, 
+.header-security span i{
     color:var(--important-color);
     padding-right: 10px;
 }
-.container-user-datas .info-users span h4, .info-physical span h4, .info-trainning span h4, .header-security span h4{
+.container-user-datas .info-users span h4,
+.info-physical span h4,
+.info-trainning span h4,
+.header-security span h4{
     color:var(--text-color);
 }
 
-.container-user-datas .info-users .infos .info, .info-physical .infos .info, .info-trainning .infos .info, .header-security .infos .info{
+.container-user-datas .info-users .infos .info,
+.info-physical .infos .info,
+.info-trainning .infos .info, 
+.header-security .infos .info{
     width: 100%;
     position:relative;
     margin:10px 5px;
     transition: all 0.2s ease-in-out;
 }
-.container-user-datas .info-users .infos .info span, .info-physical .infos .info span, .info-trainning .infos .info span, .header-security .infos .info span, .infos-security .info span{
+.container-user-datas .info-users .infos .info span,
+.info-physical .infos .info span,
+.info-trainning .infos .info span,
+.header-security .infos .info span,
+.infos-security .info span{
     color:var(--text-color);
     font-size: 12px;
 }
-.container-user-datas .info-users .infos .info .info-component, .info-physical .infos .info .info-component, .info-trainning .infos .info .info-component, .infos-security .info .info-component{
+.container-user-datas .info-users .infos .info .info-component,
+.info-physical .infos .info .info-component,
+.info-trainning .infos .info .info-component,
+.infos-security .info .info-component{
     max-width: 95%;
     background:var(--input-background-color);
     padding:2px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
 }
-.container-user-datas .info-users .infos .info .info-component i, .info-physical .infos .info .info-component i, .info-trainning .infos .info .info-component i, .infos-security .info .info-component i{
+.container-user-datas .info-users .infos .info .info-component i,
+.info-physical .infos .info .info-component i,
+.info-trainning .infos .info .info-component i,
+.infos-security .info .info-component i{
     font-size:12px;
     color: var(--border-color);
     padding:5px;
@@ -114,23 +139,33 @@ body {
     background-color: var(--background-color-2);
     color: var(--important-color);
 }
-.container-user-datas .info-users .infos .info .info-component input, .info-physical .infos .info .info-component input, .infos-security .info .info-component input{    
+.container-user-datas .info-users .infos .info .info-component input,
+.info-physical .infos .info .info-component input,
+.infos-security .info .info-component input{    
     width: 100%;
     padding:5px;
     background: transparent;
     border:none;
     color:var(--border-color);
 }
-.container-user-datas .info-users .infos .info .info-component:focus-within, .info-physical .infos .info .info-component:focus-within, .info-trainning .infos .info .info-component:focus-within, .infos-security .info .info-component:focus-within{
+.container-user-datas .info-users .infos .info .info-component:focus-within,
+.info-physical .infos .info .info-component:focus-within,
+.info-trainning .infos .info .info-component:focus-within,
+.infos-security .info .info-component:focus-within{
     outline: none;
     border: 1px solid var(--important-color);
     box-shadow: 0 0 5px var(--important-color);
     color:var(--important-color);
 }
-.container-user-datas .info-users .infos .info .info-component:focus-within i, .info-physical .infos .info .info-component:focus-within i, .info-trainning .infos .info .info-component:focus-within i, .infos-security .info .info-component:focus-within i{
+.container-user-datas .info-users .infos .info .info-component:focus-within i,
+.info-physical .infos .info .info-component:focus-within i,
+.info-trainning .infos .info .info-component:focus-within i,
+.infos-security .info .info-component:focus-within i{
     color: var(--important-color);
 }
-.container-user-datas .info-users .infos .info .info-component input:focus, .info-physical .infos .info .info-component input:focus, .infos-security .info .info-component input:focus{
+.container-user-datas .info-users .infos .info .info-component input:focus,
+.info-physical .infos .info .info-component input:focus,
+.infos-security .info .info-component input:focus{
     outline: none;
     border:none;
 }
@@ -182,8 +217,45 @@ body {
     margin:10px 5px;
     transition: all 0.2s ease-in-out;
 }
+.infos-security .info span{
+    font-size: 12px;
+    margin-bottom:5px;
+}
 .infos-security .info .info-component{
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+.btn-editing-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.btn-editing-data #btn-editing-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
+    padding:10px;
+    width: 100%;
+    color:var(--text-color);
+    font-weight: bold;
+    font-size:15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 4px #00000025;
+    cursor: pointer;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position .2s ease-in-out;
+}
+.btn-editing-data #btn-editing-data:hover{
+    background-position: right center;
+}
+.btn-editing-data #btn-editing-data i{
+    padding-right: 5px;
 }
