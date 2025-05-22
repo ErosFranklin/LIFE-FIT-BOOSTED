@@ -65,3 +65,31 @@ exports.getAuthenticatedUser = async (req, res) => {
         res.status(500).json({ message: 'Erro ao buscar usuário: ' + err.message });
     }
 };
+
+exports.updateUserController = async (req, res) => {
+    const { id } = req.params;
+    const updates = req.body;
+  
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+  
+    // Evitar alterações sensíveis diretamente
+    delete updates.password;
+    delete updates.email;
+  
+    try {
+      const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true, runValidators: true }).select('-password');
+  
+      if (!updatedUser) {
+        logger.warn(`Usuário de ID ${id} não encontrado para atualização.`);
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+      }
+  
+      logger.info(`Usuário de ID ${id} atualizado com sucesso.`);
+      res.status(200).json({ message: 'Usuário atualizado com sucesso', user: updatedUser });
+    } catch (err) {
+      logger.error(`Erro ao atualizar usuário: ${err.message}`);
+      res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
+    }
+  };

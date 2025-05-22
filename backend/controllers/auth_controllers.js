@@ -64,4 +64,31 @@ const getUserData = async (user) => {
     }
 };
 
+// trocar senha (usuário autenticado)
+exports.changePassword = async (req, res) => {
+    const userId = req.user._id;
+    const { currentPassword, newPassword } = req.body;
+  
+    try {
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).json({ error: 'Usuário não encontrado.' });
+      }
+  
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) {
+        return res.status(401).json({ error: 'Senha atual incorreta.' });
+      }
+  
+      user.password = newPassword; 
+      await user.save();
+  
+      res.status(200).json({ message: 'Senha alterada com sucesso.' });
+    } catch (err) {
+      console.error('Erro ao trocar senha:', err.message);
+      res.status(500).json({ error: 'Erro ao trocar a senha.', details: err.message });
+    }
+  };
+
 module.exports = { loginController, getUserData };
