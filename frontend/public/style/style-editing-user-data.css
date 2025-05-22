@@ -21,7 +21,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: start; 
-    padding: 20px 0; 
     background-color: var(--background-color);
     overflow-x: hidden;
 }
@@ -32,7 +31,8 @@ body {
     flex-direction: column;
     width: 100vw;
     height: auto;
-    
+    margin:20px 0px;
+
 }
 .container-user-data .container-header-data{
     display: flex;

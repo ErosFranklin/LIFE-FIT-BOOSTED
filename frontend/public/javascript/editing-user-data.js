@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    getUserData();
+    const spinnerContainer = document.querySelector(".container-spinner");
 
+    function showSpinner() {
+        if (spinnerContainer) spinnerContainer.style.display = "flex";
+    }
+    function hideSpinner() {
+        if (spinnerContainer) spinnerContainer.style.display = "none";
+    }
+
+    getUserData();
 
     async function getUserData() {
         const token = localStorage.getItem("token");
@@ -9,18 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        showSpinner();
         try {
             const response = await fetch(`http://localhost:10000/api/data_user`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-        });
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
 
-        if (!response.ok) {
-            throw new Error("Erro ao obter dados do usuário.");
-        }
+            if (!response.ok) {
+                throw new Error("Erro ao obter dados do usuário.");
+            }
 
             const data = await response.json();
             console.log(data);
@@ -32,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".weight-user").value = data.user.weight;
         } catch (error) {
             console.error(error);
+        } finally {
+            hideSpinner();
         }
     }
-    
-
-})
+});
