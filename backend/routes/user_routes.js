@@ -15,14 +15,13 @@ router.post('/user/register', async (req, res) => {
     return res.status(result.statusCode || 500).json(result);
 }); 
 
-// atualizar dados do usuário (exceto email e senha)
-router.put('/user/update/:id', authenticateJWT, async (req, res) => {
-    try {
-      return await updateUserController(req, res);
-    } catch (err) {
-      console.error('Erro ao atualizar usuário:', err.message);
-      return res.status(500).json({ message: 'Erro interno ao atualizar usuário.' });
-    }
-  });
+router.put('/user/update-by:id', authenticateJWT, async (req, res) => {
+  try {
+    return await updateUserController(req, res);
+  } catch (err) {
+    console.error('Erro ao atualizar usuário:', err.message);
+    return res.status(500).json({ message: 'Erro interno ao atualizar usuário.' });
+  }
+});
   
 module.exports = router;

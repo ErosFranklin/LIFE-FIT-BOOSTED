@@ -26,16 +26,4 @@ router.get('/data_user', authenticateJWT, async (req, res) => {
     }
 });
 
-// trocar senha (usuário autenticado)
-router.post('/user/change-password', authenticateJWT, async (req, res) => {
-    try {
-        const response = await changePassword(req, res); 
-        return response; 
-    } catch (err) {
-        console.error('Erro na troca de senha:', err.message);
-        return res.status(500).json({ error: 'Erro interno ao trocar senha.' });
-    }
-});
-
-
 module.exports = router;

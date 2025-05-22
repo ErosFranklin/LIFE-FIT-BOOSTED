@@ -1,6 +1,7 @@
 const User = require('../models/user.js');
 const logger = require('../utils/logger.js');
 const moment = require('moment');
+const bcrypt = require('bcryptjs');
 
 exports.createUserController = async (data) => {
     const { name, email, password, birthday_day, number, weight, height } = data;
@@ -67,29 +68,49 @@ exports.getAuthenticatedUser = async (req, res) => {
 };
 
 exports.updateUserController = async (req, res) => {
-    const { id } = req.params;
-    const updates = req.body;
-  
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'ID inválido' });
+  const { id } = req.params;
+  const updates = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: 'ID inválido' });
+  }
+
+  // Verifica se o usuário autenticado é o mesmo do ID
+  if (!req.user || req.user._id.toString() !== id) {
+    return res.status(403).json({ message: 'Acesso negado: ID inválido ou não autorizado.' });
+  }
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      logger.warn(`Usuário de ID ${id} não encontrado para atualização.`);
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     }
-  
-    // Evitar alterações sensíveis diretamente
+
+    // Troca de senha
+    if (updates.currentPassword && updates.newPassword) {
+      const isMatch = await bcrypt.compare(updates.currentPassword, user.password);
+      if (!isMatch) {
+        return res.status(401).json({ message: 'Senha atual incorreta.' });
+      }
+
+      user.password = updates.newPassword;
+      await user.save();
+      return res.status(200).json({ message: 'Senha alterada com sucesso.' });
+    }
+
+   
     delete updates.password;
     delete updates.email;
-  
-    try {
-      const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true, runValidators: true }).select('-password');
-  
-      if (!updatedUser) {
-        logger.warn(`Usuário de ID ${id} não encontrado para atualização.`);
-        return res.status(404).json({ message: 'Usuário não encontrado' });
-      }
-  
-      logger.info(`Usuário de ID ${id} atualizado com sucesso.`);
-      res.status(200).json({ message: 'Usuário atualizado com sucesso', user: updatedUser });
-    } catch (err) {
-      logger.error(`Erro ao atualizar usuário: ${err.message}`);
-      res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
-    }
-  };
+
+    Object.assign(user, updates);
+    await user.save();
+
+    logger.info(`Usuário de ID ${id} atualizado com sucesso.`);
+    res.status(200).json({ message: 'Usuário atualizado com sucesso.', user: user.toObject({ getters: true, virtuals: false }) });
+  } catch (err) {
+    logger.error(`Erro ao atualizar usuário: ${err.message}`);
+    res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
+  }
+};
+
