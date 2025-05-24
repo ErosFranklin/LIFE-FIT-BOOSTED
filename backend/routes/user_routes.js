@@ -15,7 +15,7 @@ router.post('/user/register', async (req, res) => {
     return res.status(result.statusCode || 500).json(result);
 }); 
 
-router.put('/user/update-by:id', authenticateJWT, async (req, res) => {
+router.put('/user/update-by/:id', authenticateJWT, async (req, res) => {
   try {
     return await updateUserController(req, res);
   } catch (err) {
