@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const newPassword = document.querySelector(".new-password").value;
         const confirmPassword = document.querySelector(".conf-new-password").value;
 
+
         if( !name || !birthday || !email || !phone || !height || !weight) {
             hideSpinner();
             errorMessage.style.display = "block";
@@ -45,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const data = {
                 name: name,
-                birthday_day: birthday,
+                //birthday_day: birthday,
                 email: email,
                 number: phone,
                 height: height,
                 weight: weight,
-                old_password: oldPassword,
-                new_password: newPassword,
+                currentPassword: oldPassword,
+                newPassword: newPassword,
             }
             const token = localStorage.getItem("token");
             const userId = localStorage.getItem("userId");
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error("Token não encontrado.");
             }
 
-            const response = await fetch(`http://localhost:10000/api/user/update-by${userId}`, {
+            const response = await fetch(`http://localhost:10000/api/user/update-by/${userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -72,7 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (!response.ok) {
+                const errorText = await response.text();
+                console.error("Erro ao atualizar dados do usuário:", response.status, errorText); 
                 throw new Error("Erro ao atualizar dados do usuário.");
+                
             }
             const responseData = await response.json();
             console.log(responseData);
