@@ -244,7 +244,7 @@ exports.setTrainingByDay = async (req, res) => {
     }
 
     if (!user.training_days.includes(day)) {
-      return res.status(400).json({ error: `Dia '${day}' não está definido em training_days.` });
+      return res.status(400).json({ error: `Dia '${day}' não está definido nos dias de treinos selecionados.` });
     }
 
     if (!Array.isArray(groups)) {
@@ -260,10 +260,12 @@ exports.setTrainingByDay = async (req, res) => {
         return res.status(400).json({ error: `Exercícios inválidos no dia ${day}.` });
       }
 
-      for (const ex of group.exercise) {
-        if (!ex.name || typeof ex.name !== 'string' || typeof ex.series !== 'number') {
-          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
-        }
+      if (
+        !ex.name || typeof ex.name !== 'string' ||
+        typeof ex.series !== 'number' ||
+        !ex.equipment || typeof ex.equipment !== 'string'
+      ) {
+        return res.status(400).json({ error: `Exercício mal formatado no dia ${day}. Campos obrigatórios: name, series, equipment.` });
       }
     }
 
@@ -360,10 +362,12 @@ exports.updateTrainingDay = async (req, res) => {
         return res.status(400).json({ error: `Cada grupo muscular no dia ${day} deve ter entre 4 e 7 exercícios.` });
       }
 
-      for (const ex of exercise) {
-        if (!ex.name || typeof ex.name !== 'string' || !ex.reps || typeof ex.reps !== 'number') {
-          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
-        }
+      if (
+        !ex.name || typeof ex.name !== 'string' ||
+        typeof ex.series !== 'number' ||
+        !ex.equipment || typeof ex.equipment !== 'string'
+      ) {
+        return res.status(400).json({ error: `Exercício mal formatado no dia ${day}. Campos obrigatórios: name, series, equipment.` });
       }
     }
 
