@@ -55,3 +55,4 @@
 [2025-05-11 13:31:36] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
 [2025-05-11 13:33:18] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
 [2025-05-11 13:35:48] ERROR: Erro ao definir treino do dia segunda para 681a969544470942599fb226: User validation failed: trainings_of_week.segunda.0.exercise: Cada grupo muscular deve ter entre 2 e 5 exercícios.
+[2025-05-22 16:24:29] WARN: Divisão inválida no PATCH: 
