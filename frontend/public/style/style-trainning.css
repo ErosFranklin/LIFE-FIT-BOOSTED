@@ -90,6 +90,12 @@ body {
 .trainning-container .trainning-list .day-tranning-day .exercise-group ul li span{
     color:var(--important-color-2);
 }
+.day-tranning-exercises p{
+    color:var(--text-color);
+    font-weight: bolder;
+    font-style: italic;
+    margin-top: 10px;
+}
 .modal-split-trainning{
     width: 100%;
     height: 100%;
@@ -114,17 +120,20 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.modal-split-trainning .modal-content .modal-header, .modal-content-trainning .modal-header-trainning{
+.modal-split-trainning .modal-content .modal-header,
+ .modal-content-trainning .modal-header-trainning{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.modal-split-trainning .modal-content .modal-header h2, .modal-content-trainning .modal-header-trainning h2{
+.modal-split-trainning .modal-content .modal-header h2,
+ .modal-content-trainning .modal-header-trainning h2{
     font-size: 1.5rem;
     color: var(--text-color);
 }
-.modal-split-trainning .modal-content .modal-header #close-modal, .modal-content-trainning .modal-header-trainning #close-modal-trainning{
+.modal-split-trainning .modal-content .modal-header #close-modal,
+ .modal-content-trainning .modal-header-trainning #close-modal-trainning{
     background-color: transparent;
     border:none;
     font-size:1.5rem;
@@ -133,7 +142,8 @@ body {
     cursor: pointer;
     transition: .2s ease-in-out;
 }
-.modal-split-trainning .modal-content .modal-header #close-modal:hover, .modal-content-trainning .modal-header-trainning #close-modal-trainning:hover{
+.modal-split-trainning .modal-content .modal-header #close-modal:hover,
+ .modal-content-trainning .modal-header-trainning #close-modal-trainning:hover{
     background-color: var(--important-color-2);
     border-radius: 5px;
 }
