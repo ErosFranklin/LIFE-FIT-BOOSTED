@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const User = require('../models/user.js');
 const logger = require('../utils/logger.js');
 const moment = require('moment');
@@ -70,6 +71,8 @@ exports.getAuthenticatedUser = async (req, res) => {
 exports.updateUserController = async (req, res) => {
   const { id } = req.params;
   const updates = req.body;
+
+  console.log('req.user:', req.user);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ message: 'ID inválido' });

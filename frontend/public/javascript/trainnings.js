@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const closeModal = document.getElementById("close-modal-trainning");
     const btnMoreExercise = document.querySelectorAll(".btn-more-exercise");
     const token = localStorage.getItem("token");
+    
     const userId = localStorage.getItem("userId");
     const spinner = document.querySelector(".container-spinner");
 
