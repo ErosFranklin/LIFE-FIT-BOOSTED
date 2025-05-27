@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function getData() {
         const userId = localStorage.getItem("userId");
         const token = localStorage.getItem("token");
+        console.log("Token:", token);
         const response = await fetch(`http://localhost:10000/api/data_user`, {
             method: "GET",
             headers: {
