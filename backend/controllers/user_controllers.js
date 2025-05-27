@@ -78,42 +78,41 @@ exports.updateUserController = async (req, res) => {
     return res.status(400).json({ message: 'ID inválido' });
   }
 
-  // Verifica se o usuário autenticado é o mesmo do ID
   if (!req.user || req.user._id.toString() !== id) {
-    return res.status(403).json({ message: 'Acesso negado: ID inválido ou não autorizado.' });
+    return res.status(403).json({ message: 'Acesso negado: não autorizado.' });
   }
 
   try {
     const user = await User.findById(id);
     if (!user) {
-      logger.warn(`Usuário de ID ${id} não encontrado para atualização.`);
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
+    
+    const allowedFields = ['name', 'birthday_day', 'number', 'weight', 'height', 'email'];
+    const filteredUpdates = {};
 
-    // Troca de senha
-    if (updates.currentPassword && updates.newPassword) {
-      const isMatch = await bcrypt.compare(updates.currentPassword, user.password);
-      if (!isMatch) {
-        return res.status(401).json({ message: 'Senha atual incorreta.' });
+    for (const key of allowedFields) {
+      if (updates[key] !== undefined) {
+        if (key === 'birthday_day') {
+          const birth = moment(updates.birthday_day, 'DD/MM/YYYY');
+          if (!birth.isValid()) {
+            return res.status(400).json({ message: 'Data de nascimento inválida' });
+          }
+          filteredUpdates[key] = birth.toDate();
+        } else {
+          filteredUpdates[key] = updates[key];
+        }
       }
-
-      user.password = updates.newPassword;
-      await user.save();
-      return res.status(200).json({ message: 'Senha alterada com sucesso.' });
     }
 
-   
-    delete updates.password;
-    delete updates.email;
-
-    Object.assign(user, updates);
+    Object.assign(user, filteredUpdates);
     await user.save();
 
-    logger.info(`Usuário de ID ${id} atualizado com sucesso.`);
-    res.status(200).json({ message: 'Usuário atualizado com sucesso.', user: user.toObject({ getters: true, virtuals: false }) });
+    res.status(200).json({
+      message: 'Usuário atualizado com sucesso.',
+      user: user.toObject({ getters: true, virtuals: false })
+    });
   } catch (err) {
-    logger.error(`Erro ao atualizar usuário: ${err.message}`);
     res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
   }
 };
-
