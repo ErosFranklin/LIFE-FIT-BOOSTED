@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const phone = document.querySelector(".phone-user").value;
         const height = document.querySelector(".height-user").value;
         const weight = document.querySelector(".weight-user").value;
-        const oldPassword = document.querySelector(".old-password").value;
-        const newPassword = document.querySelector(".new-password").value;
-        const confirmPassword = document.querySelector(".conf-new-password").value;
 
 
         if( !name || !birthday || !email || !phone || !height || !weight) {
@@ -29,30 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
             errorMessage.textContent = "Por favor, preencha todos os campos obrigatórios.";
             return;
         }
-        if( oldPassword && (!newPassword || !confirmPassword)) {
-            hideSpinner();
-            errorMessage.style.display = "block";
-            errorMessage.textContent = "Por favor, preencha os campos de nova senha e confirmação de senha.";
-            return;
-        }
-        if( newPassword !== confirmPassword) {
-            hideSpinner();
-            errorMessage.style.display = "block";
-            errorMessage.textContent = "As senhas não coincidem. Por favor, tente novamente.";
-            return;
-        }
 
         showSpinner();
         try {
             const data = {
                 name: name,
-                //birthday_day: birthday,
+                birthday_day: birthday,
                 email: email,
                 number: phone,
                 height: height,
                 weight: weight,
-                currentPassword: oldPassword,
-                newPassword: newPassword,
             }
             const token = localStorage.getItem("token");
             const userId = localStorage.getItem("userId");
