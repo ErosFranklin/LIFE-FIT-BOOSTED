@@ -3243,3 +3243,4 @@
 [2025-06-03 18:54:07] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
 [2025-06-03 19:01:58] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
 [2025-06-03 19:06:41] INFO: Usuário 67fa873d595fee87c702bfb1 atualizado com os dados: {"name":"Kaio Vinícius","birthday_day":"2002-06-03T03:00:00.000Z","number":"84996909731","weight":82,"height":1.71,"email":"kaiovbatista19@gmail.com"}
+
