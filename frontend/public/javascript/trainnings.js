@@ -8,16 +8,67 @@ document.addEventListener("DOMContentLoaded", async function () {
     const overlay = document.querySelector(".modal-trainning");
     const modal = document.querySelector(".modal-content-trainning"); 
     const closeModal = document.getElementById("close-modal-trainning");
+    const closeModalEdit = document.getElementById("close-edit-modal-trainning");
+    const modalEdit = document.querySelector(".modal-edit-trainning");
+    const modalEditContent = document.querySelector(".modal-edit-content-trainning");
     const btnMoreExercise = document.querySelectorAll(".btn-more-exercise");
     const token = localStorage.getItem("token");
+    let dia = null;
+    let index = null;
+    let indexGroup = null
     
     const userId = localStorage.getItem("userId");
     const spinner = document.querySelector(".container-spinner");
+    const btnEditExercise = document.querySelector("#btn-edit-exercise");
 
     const trainningsDaysData = await getDaysTrainninhg(userId);
     const trainningsDays = trainningsDaysData.training_days
     getTrainning(userId, trainningContainer, trainningsDays)
 
+    document.addEventListener('click', async function (event) {
+        const btnEdit = event.target.closest('.btn-edit-exercise');
+        if (btnEdit) {
+            dia = btnEdit.dataset.id;
+            index = parseInt(btnEdit.dataset.index); 
+            indexGroup = parseInt(btnEdit.dataset.muscle);
+            console.log("Dia:", dia, "Index:", index);
+            modalEdit.style.display = "flex";
+            modalEditContent.style.display = "flex";
+            
+            try {
+                const response = await fetch(`http://localhost:10000/api/${userId}/training/${dia}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar treino para edição.");
+                }
+                const data = await response.json();
+                const treino = data.trainings[indexGroup];
+                console.log("Treino para edição:", treino);
+                
+                modalEditContent.querySelectorAll('input, select').forEach(el => {
+                    if (el.tagName === 'SELECT') {
+                        el.selectedIndex = 0;
+                    } else {
+                        el.value = '';
+                    }
+                });
+                
+                modalEditContent.querySelector(".exercise-name").value = treino.exercise[index].name;
+                modalEditContent.querySelector(".exercise-muscle-group").value = treino.muscleArea[0];
+                modalEditContent.querySelector(".series").value = treino.exercise[index].series;
+                modalEditContent.querySelector(".equipment").value = treino.exercise[index].equipment;
+            } catch (error) {
+                console.error("Erro ao editar treino:", error);
+                errorMessageModal.style.display = "block";
+                errorMessageModal.textContent = "Erro ao editar treino. Tente novamente mais tarde.";
+            }
+        }
+    });
     async function getTrainning(userId, trainningContainer, trainningsDays) {
         spinner.style.display = "block";
         try{
@@ -52,16 +103,24 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const exercisesContainer = dayContainer.querySelector('.day-tranning-exercises');
 
                 if (data[day] && data[day].length > 0) {
-                    data[day].forEach(group => {
+                    data[day].forEach((group, indexGroup) => {
                         const muscleArea = group.muscleArea.join(', ');
                         const groupContainer = document.createElement('div');
                         groupContainer.classList.add('exercise-group');
-
+                        
                         let exercisesHTML = '';
-                        group.exercise.forEach(ex => {
+                        group.exercise.forEach((ex, index) => {
                             exercisesHTML += `
-                            <li>Exercício: <span>${ex.name}</span></li>
-                            <li>Quantidade de Séries: <span>${ex.series}</span></li>
+                            <li>
+                                Exercício: <span>${ex.name}</span><br>
+                                Quantidade de Séries: <span>${ex.series}</span><br>
+                                <button class="btn-edit-exercise" data-id="${day}" data-index="${index}" data-muscle="${indexGroup}">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+                                <button class="btn-delete-exercise" data-id="${day}" data-index="${index}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </li>
                             `;
                         });
 
@@ -69,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                             <h4>Grupo Muscular: ${muscleArea}</h4>
                             <ul>${exercisesHTML}</ul>
                         `;
-
+                        
                         exercisesContainer.appendChild(groupContainer);
                     });
                 } else {
@@ -112,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     btnAddExercise.addEventListener("click", async function (event) {
         event.preventDefault();
-
+        console.log("Adicionar exercício");
         const selectTrainingDay = document.getElementById('select-training-day');
         selectTrainingDay.innerHTML = ""; 
         const response = await getDaysTrainninhg(userId);
@@ -131,9 +190,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 btnAddTrainning.addEventListener("click", async function (event) {
     event.preventDefault();
-
     const selectTrainingDay = document.getElementById('select-training-day');
     const day = selectTrainingDay.value;
+    
 
     if (!day) {
         alert('Selecione um dia de treino antes de confirmar!');
@@ -199,10 +258,14 @@ btnAddTrainning.addEventListener("click", async function (event) {
     }
 });
 
-
+    closeModalEdit.addEventListener("click", function () {
+        modalEdit.style.display = "none";
+        modalEditContent.style.display = "none";
+    })
     closeModal.addEventListener("click", function () {
         overlay.style.display = "none";   
         modal.style.display = "none";
+       
     });
 
     btnMoreExercise.forEach(button => {
@@ -242,4 +305,51 @@ btnAddTrainning.addEventListener("click", async function (event) {
             console.log("Adicionar mais exercícios");
         });
     });
+    btnEditExercise.addEventListener("click", async function (event) {
+        event.preventDefault();
+        console.log(userId, dia)
+        const exerciseName = modalEditContent.querySelector(".exercise-name").value;
+        const muscleGroup = modalEditContent.querySelector(".exercise-muscle-group").value;
+        const series = parseInt(modalEditContent.querySelector(".series").value);
+        const equipment = modalEditContent.querySelector(".equipment").value;
+
+        const groups = [{
+            muscleArea: [muscleGroup],
+            exercise: [{
+                name: exerciseName,
+                series: series,
+                equipment: equipment
+            }]
+        }];
+
+        try{
+            const response = await fetch(`http://localhost:10000/api/${userId}/update/training/${dia}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({groups} )
+            })
+            if(!response.ok) {
+                throw new Error("Erro ao atualizar treino.");
+            }
+            const data = await response.json();
+            console.log("Treino atualizado:", data);
+            
+            modalEdit.style.display = "none";
+            modalEditContent.style.display = "none";
+        }catch (error) {
+            console.error("Erro ao atualizar treino:", error);
+            errorMessageModal.style.display = "block";
+            errorMessageModal.textContent = "Erro ao atualizar treino. Tente novamente mais tarde.";
+        }
+
+
+
+
+    })
+   
+    
 });
+
