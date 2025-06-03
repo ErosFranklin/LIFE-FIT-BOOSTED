@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Dados</title>
+    <link rel="stylesheet" href="../style/style-editing-user-data.css">
+    <link rel="stylesheet" href="../style/style-spinner.css">
+    <link rel="stylesheet" href="../style/style-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main>
+        <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+        </div>
+        <div class="container-user-data">
+            <div class="container-header-data">
+                <h1><a href="../views/user-data.html"><i class="fa-solid fa-chevron-left"></i></a>Editar Perfil</h1>
+            </div>
+            <div class="container-user-datas">
+                        <div class="info-users">
+                            <span><i class="fa-solid fa-user"></i><h4>Informações Pessoais</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Nome:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input type="text" class="name-user" placeholder="Nome Completo">
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Idade:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <input type="date" class="bithday-user" >
+                                    </span>
+                                    
+                                </div>
+                                <div class="info">
+                                    <span>Email:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input type="email" class="email-user" placeholder="Email">
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Numero de Telefone:</span>
+                                    <span class="info-component">
+                                      <i class="fa-solid fa-phone"></i>
+                                      <input type="text" class="phone-user" placeholder="00000000000">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-physical">
+                          <span><i class="fa-solid fa-weight-hanging"></i><h4>Informações Físicas</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Altura:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-ruler-vertical"></i>
+                                        <input type="number" class="height-user" placeholder="Altura">
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Peso:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-weight-hanging"></i>
+                                        <input type="number" class="weight-user" placeholder="Peso">
+                                    </span>
+                                </div>
+                              </div>
+                        </div>
+                        <!--
+                            <div class="info-trainning">
+                            <span><i class="fa-solid fa-dumbbell"></i><h4>Informações de Treino</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Split de Treino:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-dumbbell"></i>
+                                        <select name="split-treino" id="split-treino">
+                                            <option value="ABC">Treino ABC</option>
+                                            <option value="ABCD">Treino ABCD</option>
+                                            <option value="ABCDE">Treino ABCDE</option>
+                                        </select>
+                                    </span>
+                                </div>
+                              </div>
+                        </div>
+                        
+                        <div class="info-security">
+                            <div class="header-security">
+                                <span><i class="fa-solid fa-shield-halved"></i><h4>Informações de Seguranca</h1></span>
+                                <button id="btn-security" onclick="viewModal()">Alterar</button>
+                            </div>
+                            <div class="infos-security" id="infos-security">
+                                <div class="info">
+                                    <span>Senha Atual:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-ruler-vertical"></i>
+                                        <input type="number" class="old-password" placeholder="******">
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Nova Senha:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-ruler-vertical"></i>
+                                        <input type="number" class="new-password" placeholder="******">
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Confirmar Nova Senha:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-ruler-vertical"></i>
+                                        <input type="number" class="conf-new-password" placeholder="******">
+                                    </span>
+                                </div>
+                              </div>
+                        </div>
+                    -->
+                        <div class="btn-editing-data">
+                            <span class="error_message"></span>
+                            <button type="submit" id="btn-editing-data"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+                        </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="../javascript/editing-user-data.js"></script>
+    <script src="../javascript/modal-password.js"></script>
+</body>
+</html>

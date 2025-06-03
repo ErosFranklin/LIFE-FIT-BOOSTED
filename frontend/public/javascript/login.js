@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 throw new Error(errorData.message || "Erro ao fazer login.");
             }
             const data = await response.json();
-            console.log("Login bem-sucedido:", data);
+            
             if(data && data.token){
                 localStorage.setItem("token", data.token);
                 const decode = jwt_decode(data.token);

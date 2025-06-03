@@ -55,10 +55,54 @@
     </nav>
     </header>
     <main>
+        <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="modal-split-trainning">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edite sua Split de Treino <i class="fa-solid fa-address-book"></i></h2>
+          <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="info-split">
+          <p>ABC - Treino de 3 dias por Semana</p>
+          <p>ABCD - Treino de 4 dias por Semana</p>
+          <p>ABCDE - Treino de 5 dias por Semana</p>
+        </div>
+        <form id="add-split-form">
+          <select name="split" id="split">
+            <option value="" disabled selected>Selecione sua Nova Split</option>
+            <option value="ABC">ABC</option>
+            <option value="ABCD">ABCD</option>
+            <option value="ABCDE">ABCDE</option>
+          </select>
+        
+        <div class="container-trainning-days">
+          <h3>Quais os seus dias de treino?</h3>
+          <div id="form-training-days">
+            <label><input type="checkbox" name="training_day" value="segunda"> Segunda</label><br>
+            <label><input type="checkbox" name="training_day" value="terça"> Terça</label><br>
+            <label><input type="checkbox" name="training_day" value="quarta"> Quarta</label><br>
+            <label><input type="checkbox" name="training_day" value="quinta"> Quinta</label><br>
+            <label><input type="checkbox" name="training_day" value="sexta"> Sexta</label><br>
+            <label><input type="checkbox" name="training_day" value="sábado"> Sábado</label><br>
+            <label><input type="checkbox" name="training_day" value="domingo"> Domingo</label><br>
+          </div>
+        </div>
+          
+          <div class="container-btn-split">
+            <span class="error_message"></span>
+            <button type="submit" id="btn-split">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
         <div class="container-user-data">
             <div class="container-header-data">
                 <h1>Meu Perfil</h1>
-                <span class="btn-editing"><a href="../views/user-editing-data"><i class="icon fa-solid fa-pencil"></i>Editar Perfil</a></span>
+                <span class="btn-editing"><a href="../views/editing-user-data.html"><i class="icon fa-solid fa-pencil"></i>Editar Perfil</a></span>
             </div>
             <div class="container-user-datas">
                 <div class="container-grid-user-data">
@@ -84,6 +128,10 @@
                             </div>   
                         </div>
                         <div class="btns-container-user">
+                          <button type="button" id="editing-split">
+                              <i class="fa-regular fa-pen-to-square"></i>
+                              <span class="txt-link">Editar Split de Treino</span>
+                          </button>
                             <button id="logout">
                                 <i class="fa-solid fa-right-from-bracket"></i>
                                 <span class="txt-link">Sair</span>
@@ -167,5 +215,6 @@
 
     </main>
     <script src="../javascript/user-data.js"></script>
+    <script src="../javascript/editing-user-split.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const User = require('../models/user.js');
 const logger = require('../utils/logger.js');
 const moment = require('moment');
@@ -84,7 +85,7 @@ exports.updateUserController = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
-    
+
     const allowedFields = ['name', 'birthday_day', 'number', 'weight', 'height', 'email'];
     const filteredUpdates = {};
 

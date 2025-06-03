@@ -90,6 +90,12 @@ body {
 .trainning-container .trainning-list .day-tranning-day .exercise-group ul li span{
     color:var(--important-color-2);
 }
+.day-tranning-exercises p{
+    color:var(--text-color);
+    font-weight: bolder;
+    font-style: italic;
+    margin-top: 10px;
+}
 .modal-split-trainning{
     width: 100%;
     height: 100%;
@@ -114,17 +120,23 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.modal-split-trainning .modal-content .modal-header, .modal-content-trainning .modal-header-trainning{
+.modal-split-trainning .modal-content .modal-header,
+ .modal-content-trainning .modal-header-trainning,
+ .modal-edit-trainning .modal-header-trainning{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.modal-split-trainning .modal-content .modal-header h2, .modal-content-trainning .modal-header-trainning h2{
+.modal-split-trainning .modal-content .modal-header h2,
+ .modal-content-trainning .modal-header-trainning h2,
+ .modal-edit-trainning .modal-header-trainning h2{
     font-size: 1.5rem;
     color: var(--text-color);
 }
-.modal-split-trainning .modal-content .modal-header #close-modal, .modal-content-trainning .modal-header-trainning #close-modal-trainning{
+.modal-split-trainning .modal-content .modal-header #close-modal,
+ .modal-content-trainning .modal-header-trainning #close-modal-trainning,
+ .modal-edit-trainning .modal-edit-content-trainning #close-edit-modal-trainning{
     background-color: transparent;
     border:none;
     font-size:1.5rem;
@@ -133,7 +145,9 @@ body {
     cursor: pointer;
     transition: .2s ease-in-out;
 }
-.modal-split-trainning .modal-content .modal-header #close-modal:hover, .modal-content-trainning .modal-header-trainning #close-modal-trainning:hover{
+.modal-split-trainning .modal-content .modal-header #close-modal:hover,
+ .modal-content-trainning .modal-header-trainning #close-modal-trainning:hover,
+  .modal-edit-trainning .modal-edit-content-trainning #close-edit-modal-trainning:hover{
     background-color: var(--important-color-2);
     border-radius: 5px;
 }
@@ -269,7 +283,30 @@ body {
 .trainning-header #btn-add-exercise:hover{
     background-position: right center;
 }
-
+.modal-edit-trainning{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+.modal-edit-content-trainning{
+    width: 50%;
+    height: auto;
+    max-height: 90vh;
+    background-color: var(--background-color-2);
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
 .modal-trainning {
     width: 100%;
     height: 100%;
@@ -294,7 +331,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
 }
-.modal-trainning .modal-content-trainning #add-exercise-form{
+.modal-trainning .modal-content-trainning #add-exercise-form,
+ .modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form{
     width: 100%;
     height: 100%;
     display: flex;
@@ -303,13 +341,15 @@ body {
     flex-direction: column;
     padding: 20px;
 }
-.modal-trainning .modal-content-trainning #add-exercise-form label{
+.modal-trainning .modal-content-trainning #add-exercise-form label,
+ .modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form label{
     color: var(--text-color);
     font-weight: bolder;
     margin-right: 10px;
     margin-bottom: 10px;
 }
-.modal-trainning .modal-content-trainning #add-exercise-form input{
+.modal-trainning .modal-content-trainning #add-exercise-form input,
+ .modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form input{
     width: 100%;
     min-width: 70%;
     padding:5px;
@@ -320,14 +360,16 @@ body {
     color:var(--border-color);
     transition: .2s ease-in-out;
 }
-.modal-trainning .modal-content-trainning #add-exercise-form input:focus{
+.modal-trainning .modal-content-trainning #add-exercise-form input:focus,
+ .modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form input:focus{
     outline: none;
     border: 1px solid var(--important-color);
     background-color: var(--input-background-color);
     color: var(--important-color-2);
 }
 
-.modal-trainning .modal-content-trainning #add-exercise-form select{
+.modal-trainning .modal-content-trainning #add-exercise-form select,
+.modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form select{
     width: 100%;
     min-width: 70%;
     padding:5px;
@@ -338,7 +380,8 @@ body {
     color:var(--border-color);
     transition: .2s ease-in-out;
 }
-.modal-trainning .modal-content-trainning #add-exercise-form select:focus{
+.modal-trainning .modal-content-trainning #add-exercise-form select:focus,
+.modal-edit-trainning .modal-edit-content-trainning #edit-exercise-form select:focus{
     outline: none;
     border: 1px solid var(--important-color);
     background-color: var(--input-background-color);
@@ -389,7 +432,8 @@ body {
     padding:10px;
     
 }
-.container-btn-trainning #btn-trainning{
+.container-btn-trainning #btn-trainning,
+ .container-btn-trainning #btn-edit-exercise{
     border:none;
     background-image: linear-gradient(to right, var(--important-color), var(--important-color-2));
     padding:10px;
@@ -404,8 +448,36 @@ body {
     background-position: left center;
     transition: background-position .2s ease-in-out;
 }
-.container-btn-trainning #btn-trainning:hover{
+.container-btn-trainning #btn-trainning:hover,
+ .container-btn-trainning #btn-edit-exercise:hover{
     background-position: right center;
+}
+
+.btns-exercise{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 0px;
+}
+ul li button{
+    border:none;
+    background: transparent;
+    padding:10px;
+    min-width: 10%;
+    color:var(--text-color);
+    font-weight: bold;
+    font-size:15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-size: 200% auto;
+    background-position: left center;
+    transition:  .2s ease-in-out;
+}
+ul li button:hover{
+    color:var(--important-color-2);
+    box-shadow: 5px 5px 4px #00000025;
 }
 
 

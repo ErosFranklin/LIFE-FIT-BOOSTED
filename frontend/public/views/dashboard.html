@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+    <link rel="stylesheet" href="../style/style-dashboard.css">
+    <link rel="stylesheet" href="../style/style-spinner.css">
+    <link rel="stylesheet" href="../style/style-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+</head>
+<body>
+    <header>
+    <nav class="side-menu">
+      <div class="image-menu">
+        <img src="../image/logo-0-name.png" alt="logo">
+      </div>
+      <ul>
+        <li class="menu-item">
+          <a href="../views/user-data.html">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <span class="txt-link">Dados</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/trainning.html">
+            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
+            <span class="txt-link">Treinos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="txt-link">Dieta</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="txt-link">Contatos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/sobre.html">
+            <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="txt-link">Sobre</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <button id="logout">
+            <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+            <span class="txt-link">Sair</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <menu>
+    <div class="container-spinner">
+      <div class="overlay-spinner">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div class="container-dashboard">
+      <h1>Bem-vindo ao Life Fit Boosted</h1>
+      <p>Aqui você pode acessar suas informações pessoais, treinos, dieta e muito mais.</p>
+      <span>Use o menu lateral para navegar entre as seções.</span>
+    </div>
+
+    <div class="container-principal">
+        <div class="container-componentes">
+            <!--
+            <div class="componente">
+                <img src="" alt="img-trainning">
+            </div>
+            -->
+            <div class="componente-data-trainning">
+                <div class="componente-data-trainning">
+                  <h3 id="title"></h3>
+                  <div id="exercise-container">
+                    <div id="exercise-label"></div>
+                  </div>
+                  <div class="paginacao-global">
+                    <button id="prev-global"><i class="icon-global prev fa-regular fa-square-caret-left"></i></button>
+                    <span id="page-info-global"></span>
+                    <button id="next-global"><i class="icon-global next fa-regular fa-square-caret-right"></i></button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </menu>
+  <script src="../javascript/exercise-day.js"></script>
+
+<script>
+/*
+   (async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'f4e318fb5amsh9fdfb335006b82ep1f3ef5jsn66df7f1b85d2', // 👈 Coloque sua chave da RapidAPI aqui
+          'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+      }
+    };
+  // 1) Puxa *tudo* de uma vez
+  const all = await fetch(
+    'https://exercisedb.p.rapidapi.com/exercises',
+    options
+  ).then(r => r.json());
+
+  // 2) Conta quantos há de cada bodyPart
+  const counts = all.reduce((acc, ex) => {
+    acc[ex.bodyPart] = (acc[ex.bodyPart] || 0) + 1;
+    return acc;
+  }, {});
+
+  // 3) Exibe
+  console.table(counts);
+  })();
+  */
+</script>
+
+</body>
+</html>
