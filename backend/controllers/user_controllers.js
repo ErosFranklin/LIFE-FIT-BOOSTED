@@ -47,7 +47,7 @@ exports.getAuthenticatedUser = async (req, res) => {
         return res.status(400).json({ message: 'ID inválido' });
     }
 
-    if (!req.user || req.user._id.toString() !== userId) {
+    if (!req.user || req.user.id.toString() !== userId) {
         logger.warn(`Acesso negado: usuário não autenticado ou ID inválido.`);
         return res.status(403).json({ message: 'Acesso negado: Usuário não autenticado ou ID inválido' });
     }
@@ -72,13 +72,11 @@ exports.updateUserController = async (req, res) => {
   const { id } = req.params;
   const updates = req.body;
 
-  console.log('req.user:', req.user);
-
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ message: 'ID inválido' });
   }
 
-  if (!req.user || req.user._id.toString() !== id) {
+  if (!req.user || String(req.user.id) !== id) {
     return res.status(403).json({ message: 'Acesso negado: não autorizado.' });
   }
 
@@ -87,7 +85,7 @@ exports.updateUserController = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
-    
+
     const allowedFields = ['name', 'birthday_day', 'number', 'weight', 'height', 'email'];
     const filteredUpdates = {};
 
@@ -108,11 +106,14 @@ exports.updateUserController = async (req, res) => {
     Object.assign(user, filteredUpdates);
     await user.save();
 
-    res.status(200).json({
-      message: 'Usuário atualizado com sucesso.',
-      user: user.toObject({ getters: true, virtuals: false })
-    });
-  } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
-  }
-};
+      logger.info(`Usuário atualizado com os dados: ${JSON.stringify(filteredUpdates)}`);
+
+      res.status(200).json({
+        message: 'Usuário atualizado com sucesso.',
+        user: user.toObject({ getters: true, virtuals: false })
+      });
+    } catch (err) {
+      logger.error(`Erro ao atualizar usuário ${id}: ${err.message}`);
+      res.status(500).json({ message: 'Erro ao atualizar usuário', error: err.message });
+    }
+  };
