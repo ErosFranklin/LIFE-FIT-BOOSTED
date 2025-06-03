@@ -59,3 +59,6 @@
 [2025-05-24 17:56:35] ERROR: Erro ao buscar treino do dia ':day' para usuário :userId: Cast to ObjectId failed for value ":userId" (type string) at path "_id" for model "User"
 [2025-05-24 17:56:36] ERROR: Erro ao buscar treino do dia ':day' para usuário userId: Cast to ObjectId failed for value "userId" (type string) at path "_id" for model "User"
 [2025-05-24 17:56:37] ERROR: Erro ao buscar treino do dia ':day' para usuário $userId: Cast to ObjectId failed for value "$userId" (type string) at path "_id" for model "User"
+[2025-06-03 16:12:35] ERROR: Erro ao buscar treino do dia '$quarta`' para usuário $681a969544470942599fb226: Cast to ObjectId failed for value "$681a969544470942599fb226" (type string) at path "_id" for model "User"
+[2025-06-03 16:13:26] ERROR: Erro ao buscar treino do dia '$quarta`' para usuário $681a969544470942599fb226: Cast to ObjectId failed for value "$681a969544470942599fb226" (type string) at path "_id" for model "User"
+[2025-06-03 16:13:50] ERROR: Erro ao buscar treino do dia '$quarta`' para usuário $: Cast to ObjectId failed for value "$" (type string) at path "_id" for model "User"
