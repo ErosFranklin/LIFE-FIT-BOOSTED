@@ -358,8 +358,8 @@ exports.updateTrainingDay = async (req, res) => {
         return res.status(400).json({ error: `Grupo(s) musculares inválidos no dia ${day}.` });
       }
 
-      if (!Array.isArray(exercise) || exercise.length < 4 || exercise.length > 7) {
-        return res.status(400).json({ error: `Cada grupo muscular no dia ${day} deve ter entre 4 e 7 exercícios.` });
+      if (!Array.isArray(exercise) || exercise.length === 0) {
+        return res.status(400).json({ error: `É necessário enviar ao menos 1 exercício para cada grupo.` });
       }
 
       if (
