@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error("Token não encontrado.");
             }
 
-            const response = await fetch(`http://localhost:10000/api/user/update-by/${userId}`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/user/update-by/${userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         showSpinner();
         try {
-            const response = await fetch(`http://localhost:10000/api/data_user`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/data_user`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

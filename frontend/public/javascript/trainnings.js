@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             modalEditContent.style.display = "flex";
             
             try {
-                const response = await fetch(`http://localhost:10000/api/${userId}/training/${dia}`, {
+                const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/${dia}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function getTrainning(userId, trainningContainer, trainningsDays) {
         spinner.style.display = "block";
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/training/week`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/week`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function getDaysTrainninhg(userId) {
         try {
-            const responseData = await fetch(`http://localhost:10000/api/${userId}/training/days`, {
+            const responseData = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/days`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -253,7 +253,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
     console.log("Grupos enviados:", JSON.stringify(groups, null, 2));
 
     try {
-        const response = await fetch(`http://localhost:10000/api/${userId}/create/training/${day}`, {
+        const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/${day}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -356,7 +356,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
         };
 
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/update/training/${dia}?exerciseId=${exerciseId}`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/update/training/${dia}?exerciseId=${exerciseId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -388,7 +388,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
     btnDeleteExercise.addEventListener("click", async function (event) {
         event.preventDefault();
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/delete/training/${dia}?exerciseId=${exerciseId}`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/delete/training/${dia}?exerciseId=${exerciseId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
