@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("https://life-fit-boosted.vercel.app/api/user/login", {
+            const response = await fetch("http://localhost:10000/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 localStorage.setItem("token-decode", decode);
                 localStorage.setItem("trainning-split", data.user.training_split);
             }
-            window.location.href = "/views/trainning.html"; 
+            window.location.href = "../public/views/trainning.html"; 
 
         } catch (error) {
             console.error("Erro ao fazer login:", error);
