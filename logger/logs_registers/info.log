@@ -3239,16 +3239,10 @@
 [2025-06-03 17:07:37] INFO: GET trainings_of_week para usuário: 681a969544470942599fb226
 [2025-06-03 17:10:01] INFO: GET training_days para usuário: 681a969544470942599fb226
 [2025-06-03 17:10:01] INFO: GET trainings_of_week para usuário: 681a969544470942599fb226
-<<<<<<< Updated upstream
 [2025-06-03 18:42:33] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
 [2025-06-03 18:54:07] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
 [2025-06-03 19:01:58] INFO: Sucesso no login para usuário com credencial kaiovbatista19@gmail.com.
 [2025-06-03 19:06:41] INFO: Usuário 67fa873d595fee87c702bfb1 atualizado com os dados: {"name":"Kaio Vinícius","birthday_day":"2002-06-03T03:00:00.000Z","number":"84996909731","weight":82,"height":1.71,"email":"kaiovbatista19@gmail.com"}
-
-=======
-[2025-06-03 17:10:13] INFO: GET training_days para usuário: 681a969544470942599fb226
-[2025-06-03 17:10:13] INFO: GET trainings_of_week para usuário: 681a969544470942599fb226
->>>>>>> Stashed changes
 [2025-06-03 19:38:17] INFO: Sucesso no login para usuário com credencial eros123@gmail.com.
 [2025-06-03 19:38:26] INFO: GET training_days para usuário: 681a969544470942599fb226
 [2025-06-03 19:38:26] INFO: GET trainings_of_week para usuário: 681a969544470942599fb226
@@ -4021,3 +4015,4 @@
 [2025-06-03 21:50:20] INFO: GET trainings_of_week para usuário: 683f897661e8bb69e3be64b9
 [2025-06-03 21:54:33] INFO: GET training_days para usuário: 683f897661e8bb69e3be64b9
 [2025-06-03 21:54:33] INFO: GET trainings_of_week para usuário: 683f897661e8bb69e3be64b9
+
