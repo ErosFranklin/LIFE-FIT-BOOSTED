@@ -129,7 +129,7 @@ body{
     padding:5px;
     background: transparent;
     border:none;
-    color:var(--border-color)
+    color:var(--border-color);
 }
 
 .container-components-account .component .label{

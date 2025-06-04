@@ -244,7 +244,7 @@ exports.setTrainingByDay = async (req, res) => {
     }
 
     if (!user.training_days.includes(day)) {
-      return res.status(400).json({ error: `Dia '${day}' não está definido em training_days.` });
+      return res.status(400).json({ error: `Dia '${day}' não está definido nos dias de treinos selecionados.` });
     }
 
     if (!Array.isArray(groups)) {
@@ -261,28 +261,32 @@ exports.setTrainingByDay = async (req, res) => {
       }
 
       for (const ex of group.exercise) {
-        if (!ex.name || typeof ex.name !== 'string' || typeof ex.series !== 'number') {
-          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
+        if (
+          !ex.name || typeof ex.name !== 'string' ||
+          typeof ex.series !== 'number' ||
+          !ex.equipment || typeof ex.equipment !== 'string'
+        ) {
+          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}. Campos obrigatórios: name, series, equipment.` });
         }
       }
     }
 
-   // Atualiza apenas o dia específico de forma segura
-if (!(user.trainings_of_week instanceof Map)) {
-  user.trainings_of_week = new Map();
-}
+      // Atualiza apenas o dia específico de forma segura
+    if (!(user.trainings_of_week instanceof Map)) {
+      user.trainings_of_week = new Map();
+    }
 
-user.trainings_of_week.set(day, groups);
+    user.trainings_of_week.set(day, groups);
 
-await user.save();
-logger.info(`Treino do dia '${day}' atualizado para usuário: ${userId}`);
-res.status(200).json({ [day]: user.trainings_of_week.get(day) });
+    await user.save();
+    logger.info(`Treino do dia '${day}' atualizado para usuário: ${userId}`);
+    res.status(200).json({ [day]: user.trainings_of_week.get(day) });
 
-  } catch (err) {
-    logger.error(`Erro ao definir treino do dia ${req.params.day} para ${req.params.userId}: ${err.message}`);
-    res.status(500).json({ error: 'Erro ao definir o treino do dia.', details: err.message });
-  }
-};
+      } catch (err) {
+        logger.error(`Erro ao definir treino do dia ${req.params.day} para ${req.params.userId}: ${err.message}`);
+        res.status(500).json({ error: 'Erro ao definir o treino do dia.', details: err.message });
+      }
+  };
 
 
 // Obter treinos da semana
@@ -330,7 +334,6 @@ exports.getTrainingByDay = async (req, res) => {
   }
 };
 
-// Atualizar treinos de um dia específico
 exports.updateTrainingDay = async (req, res) => {
   try {
     const { userId, day } = req.params;
@@ -348,7 +351,7 @@ exports.updateTrainingDay = async (req, res) => {
       return res.status(400).json({ error: 'Formato inválido para grupos.' });
     }
 
-    // validações iguais à criação
+    // Validar grupos enviados
     for (const group of groups) {
       const { muscleArea, exercise } = group;
 
@@ -356,18 +359,53 @@ exports.updateTrainingDay = async (req, res) => {
         return res.status(400).json({ error: `Grupo(s) musculares inválidos no dia ${day}.` });
       }
 
-      if (!Array.isArray(exercise) || exercise.length < 4 || exercise.length > 7) {
-        return res.status(400).json({ error: `Cada grupo muscular no dia ${day} deve ter entre 4 e 7 exercícios.` });
+      if (!Array.isArray(exercise) || exercise.length === 0) {
+        return res.status(400).json({ error: `É necessário enviar ao menos 1 exercício para cada grupo.` });
       }
-
       for (const ex of exercise) {
-        if (!ex.name || typeof ex.name !== 'string' || !ex.reps || typeof ex.reps !== 'number') {
-          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}.` });
+        if (
+          !ex.name || typeof ex.name !== 'string' ||
+          (ex.series !== undefined && typeof ex.series !== 'number') || // series pode ser opcional, mas se existir tem que ser número
+          !ex.equipment || typeof ex.equipment !== 'string'
+        ) {
+          return res.status(400).json({ error: `Exercício mal formatado no dia ${day}. Campos obrigatórios: name, equipment.` });
         }
       }
     }
 
-    user.trainings_of_week.set(day, groups);
+    // Recupera treino atual do dia
+    const dayTrainings = user.trainings_of_week.get(day) || [];
+
+    // Atualiza somente os exercícios enviados
+    for (const payloadGroup of groups) {
+      const { muscleArea: payloadMuscleArea, exercise: payloadExercises } = payloadGroup;
+
+      // Busca grupo do dia que tenha algum muscleArea em comum
+      const dayGroup = dayTrainings.find(dg => dg.muscleArea.some(m => payloadMuscleArea.includes(m)));
+
+      if (dayGroup) {
+        for (const payloadEx of payloadExercises) {
+          // Procura exercício no grupo do dia
+          const dayEx = dayGroup.exercise.find(de => de.name === payloadEx.name && de.equipment === payloadEx.equipment);
+          if (dayEx) {
+            // Atualiza só os campos enviados (exceto name e equipment)
+            for (const key in payloadEx) {
+              if (payloadEx.hasOwnProperty(key) && key !== 'name' && key !== 'equipment') {
+                dayEx[key] = payloadEx[key];
+              }
+            }
+          } else {
+            // Se não achar, opcional: adicionar o exercício (depende da regra de negócio)
+            // dayGroup.exercise.push(payloadEx);
+          }
+        }
+      } else {
+        // Opcional: adicionar o grupo novo se não existir (depende da regra)
+        // dayTrainings.push(payloadGroup);
+      }
+    }
+
+    user.trainings_of_week.set(day, dayTrainings);
     await user.save();
 
     res.status(200).json({ message: `Treinos do dia '${day}' atualizados.` });
@@ -377,12 +415,14 @@ exports.updateTrainingDay = async (req, res) => {
   }
 };
 
+
 // Deletar treino de um dia
 exports.deleteTrainingDay = async (req, res) => {
   try {
     const { userId, day } = req.params;
+    const { exerciseId } = req.query;
 
-    logger.info(`DELETE treino do dia '${day}' para usuário: ${userId}`);
+    logger.info(`DELETE treino do dia '${day}' para usuário: ${userId}${exerciseId ? ` (exercício: ${exerciseId})` : ''}`);
 
     const user = await User.findById(userId);
 
@@ -390,12 +430,47 @@ exports.deleteTrainingDay = async (req, res) => {
       return res.status(404).json({ error: 'Treino do dia não encontrado.' });
     }
 
-    user.trainings_of_week.delete(day);
+    // Obter os grupos de treino do dia
+    const dayTrainings = user.trainings_of_week.get(day);
+    let found = false;
+
+    // Modificar o array original diretamente
+    for (let i = dayTrainings.length - 1; i >= 0; i--) {
+      const group = dayTrainings[i];
+
+      // Remover o exercício, se existir
+      const initialLength = group.exercise.length;
+      group.exercise = group.exercise.filter(ex => ex._id?.toString() !== exerciseId);
+
+      if (group.exercise.length !== initialLength) {
+        found = true;
+      }
+
+      // Remover grupo se estiver vazio
+      if (group.exercise.length === 0) {
+        dayTrainings.splice(i, 1);
+      }
+    }
+
+    if (!found) {
+      return res.status(404).json({ error: `Exercício com ID '${exerciseId}' não encontrado no dia ${day}.` });
+    }
+
+    // Se não houver mais grupos após a limpeza, deletar o dia
+    if (dayTrainings.length === 0) {
+      user.trainings_of_week.delete(day);
+    } else {
+      // Atualizar o array diretamente — sem recriar
+      user.trainings_of_week.set(day, dayTrainings);
+    }
+
+    user.markModified('trainings_of_week');
     await user.save();
 
-    res.status(200).json({ message: `Treino do dia '${day}' removido.` });
+    return res.status(200).json({ message: `Exercício '${exerciseId}' removido do dia '${day}'.` });
+
   } catch (err) {
     logger.error(`Erro ao deletar treino do dia ${req.params.day}: ${err.message}`);
-    res.status(500).json({ error: 'Erro ao remover treino do dia.', details: err.message });
+    res.status(500).json({ error: 'Erro ao remover treino.', details: err.message });
   }
 };

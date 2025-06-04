@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treinos</title>
   <link rel="stylesheet" href="../style/style-trainning.css">
+  <link rel="stylesheet" href="../style/style-spinner.css">
+  <link rel="stylesheet" href="../style/style-menu.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </head>
@@ -16,31 +18,25 @@
       </div>
       <ul>
         <li class="menu-item">
-          <a href="../html/conta.html">
+          <a href="../views/dashboard.html">
+            <span class="icon"><i class="fa-solid fa-house"></i></span>
+            <span class="txt-link">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/user-data.html">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <span class="txt-link">Dados</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/grupo.html">
-            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
-            <span class="txt-link">Treinos</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/contato.html">
-            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
-            <span class="txt-link">Dieta</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/creditos.html">
+          <a href="../views/contato.html">
             <span class="icon"><i class="fa-solid fa-phone"></i></span>
-            <span class="txt-link">Contato</span>
+            <span class="txt-link">Contatos</span>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/sobre.html">
+          <a href="../views/sobre.html">
             <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
             <span class="txt-link">Sobre</span>
           </a>
@@ -55,16 +51,75 @@
     </nav>
   </header>
   <menu>
-    
+    <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
     <div class="trainning-header">
-      <h1>Treinos</h1>
-      <button id="btn-add-exercise">Adicionar Exercício</button>
+      <h1>Treinos <i class="fa-solid fa-dumbbell"></i></h1>
+      <button id="btn-add-exercise">Adicionar Treino</button>
     </div>
     <div class="trainning-container">
       <div class="trainning-list" id="trainning-list">
+        <span class="error_message"></span>
         <!-- Lista de treinos será gerada aqui -->
       </div>
     </div>
+    <div class="modal-edit-trainning">
+        <div class="modal-edit-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Edite seu Treino <i class="fa-solid fa-dumbbell"></i></h2>
+            <button id="close-edit-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="edit-exercise-form" class="edit-exercise-form">
+            <div class="container-exercises">
+              <label>Nome do Exercicio:</label>
+            <input type="text" class="exercise-name" placeholder="ex: Supino Inclinado" required>
+            <label>Grupo Muscular:</label>
+            <select name="exercise-muscle-group" class="exercise-muscle-group">
+              <option value="" disabled selected>Selecione um item</option>
+              <option value="Costas">Costas</option>
+              <option value="Peito">Peito</option>
+              <option value="Quadriceps">Quadriceps</option>
+              <option value="Posterior">Posterior  da Coxa</option>
+              <option value="Glúteos">Glúteos</option>
+              <option value="Panturrilhas">Panturrilhas</option>
+              <option value="Ombros">Ombros</option>
+              <option value="Biceps">Biceps</option>
+              <option value="Triceps">Triceps</option>
+              <option value="Abdomen">Abdomen</option>
+              <option value="Trapézio">Trapézio </option>
+              <option value="Antebraço">Antebraços</option>
+            </select>
+            <label>Quantidade de Serie:</label>
+            <input type="number" class="series" name="series" min="1" value="5">
+            <label>Equipamento:</label>
+            <input type="text" class="equipment" name="equipment" placeholder="ex: Halteres" required>
+            <div class="container-btn-trainning">
+              <span class="error_message_modal"></span>
+              <button type="submit" id="btn-edit-exercise">Confirmar Edição</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      <div class="modal-delete-trainning">
+        <div class="modal-delete-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Deletar Treino <i class="fa-solid fa-trash"></i></h2>
+            <button id="close-delete-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="delete-exercise-form" class="delete-exercise-form">
+            <p>Você tem certeza que deseja deletar este treino?</p>
+            <div class="container-btn-delete">
+              <span class="error_message_modal_delete"></span>
+              <button type="submit" id="btn-delete-exercise">Deletar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     <div class="modal-split-trainning">
       <div class="modal-content">
         <div class="modal-header">
@@ -98,16 +153,17 @@
         </div>
           
           <div class="container-btn-split">
-            <span id="error_message"></span>
+            <span class="error_message"></span>
             <button type="submit" id="btn-split">Adicionar</button>
           </div>
         </form>
       </div>
     </div>
+    
       <div class="modal-trainning">
         <div class="modal-content-trainning">
           <div class="modal-header-trainning">
-            <h2>Adicione seu Exercício <i class="fa-solid fa-dumbbell"></i></h2>
+            <h2>Adicione seu Treino <i class="fa-solid fa-dumbbell"></i></h2>
             <button id="close-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
           </div>
           <form id="add-exercise-form" class="add-exercise-form">
@@ -136,20 +192,24 @@
             </select>
             <label>Quantidade de Serie:</label>
             <input type="number" class="series" name="series" min="1" value="5">
+            <label>Equipamento:</label>
+            <input type="text" class="equipment" name="equipment" placeholder="ex: Halteres" required>
             <div class="container-sub-exercicies">
-
-            </div>
             </div>
             <div class="more-container">
               <button type="button" class="btn-more-exercise">+</button>
             </div>
             <div class="container-btn-trainning">
-              <span class="error_message"></span>
+              <span class="error_message_modal"></span>
               <button type="submit" id="btn-trainning">Adicionar</button>
             </div>
           </form>
         </div>
       </div>
+
+
+      
+
 
   </menu>
 <!--
@@ -189,5 +249,6 @@
 -->
   <script src="../javascript/trainning-split.js"></script>
   <script src="../javascript/trainnings.js"></script>
+  <script src="../javascript/logout.js"></script>
 </body>
 </html>

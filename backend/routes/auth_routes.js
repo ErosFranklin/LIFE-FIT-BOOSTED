@@ -26,5 +26,4 @@ router.get('/data_user', authenticateJWT, async (req, res) => {
     }
 });
 
-
 module.exports = router;

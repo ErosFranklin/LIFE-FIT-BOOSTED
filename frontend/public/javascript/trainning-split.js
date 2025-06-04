@@ -6,12 +6,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("token");
     const splitTrainning = localStorage.getItem("trainning-split");
     const split = document.querySelector("#split");
-    const errorMessage = document.querySelector("#error_message");
+    const errorMessage = document.querySelector(".error_message");
     const btnSplit = document.querySelector("#btn-split");
+    const spinnerContainer = document.querySelector(".container-spinner");
+
+    function showSpinner() {
+        if (spinnerContainer) spinnerContainer.style.display = "flex";
+    }
+    function hideSpinner() {
+        if (spinnerContainer) spinnerContainer.style.display = "none";
+    }
 
     console.log(splitTrainning)
 
-    if (splitTrainning == null) {
+    if (!splitTrainning || splitTrainning === "null") {
         modal.style.display = "flex";
         overlay.style.display = "flex";
     }
@@ -20,9 +28,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         event.preventDefault();
         const trainingSplit = split.value;
         console.log("Valor do split:", trainingSplit);
-        
+
+        showSpinner();
         try {
-            const responseSplit = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/split`, {
+            const responseSplit = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/split`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,41 +46,38 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const dataSplit = await responseSplit.json();
             console.log("Split criado com sucesso:", dataSplit);
-
-            
             localStorage.setItem("trainning-split", trainingSplit);
-
 
         } catch (error) {
             console.error("Erro ao criar split:", error);
             errorMessage.textContent = "Erro ao criar split de treino. Tente novamente mais tarde.";
             errorMessage.style.display = "block";
+            hideSpinner();
             return; 
         }
-        
 
-   
         const checkboxes = document.querySelectorAll('input[name="training_day"]:checked');
         const selectedDays = Array.from(checkboxes).map(cb => cb.value);
 
         console.log("Dias selecionados:", selectedDays);
 
-        
         const splitLimits = { ABC: 3, ABCD: 4, ABCDE: 5 };
 
         if (!splitLimits[trainingSplit]) {
             alert("Split não definido ou inválido.");
+            hideSpinner();
             return;
         }
 
         if (selectedDays.length !== splitLimits[trainingSplit]) {
             errorMessage.textContent = `Você precisa selecionar exatamente ${splitLimits[trainingSplit]} dias para o split ${trainingSplit}.`;
             errorMessage.style.display = "block";
+            hideSpinner();
             return;
         }
 
         try {
-            const responseDays = await fetch(`https://life-fit-boosted.onrender.com/api/${userId}/create/training/days`, {
+            const responseDays = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/days`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -95,6 +101,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (error) {
             console.error("Erro ao definir dias:", error);
             alert("Erro ao definir dias de treino. Tente novamente mais tarde.");
+        } finally {
+            hideSpinner();
         }
     });
 

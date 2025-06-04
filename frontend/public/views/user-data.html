@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-user-data.css">
+    <link rel="stylesheet" href="../style/style-spinner.css">
+    <link rel="stylesheet" href="../style/style-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="side-menu">
+      <div class="image-menu">
+        <img src="../image/logo-0-name.png" alt="logo">
+      </div>
+      <ul>
+        <li class="menu-item">
+          <a href="../views/dashboard.html">
+            <span class="icon"><i class="fa-solid fa-house"></i></span>
+            <span class="txt-link">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/trainning.html">
+            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
+            <span class="txt-link">Treinos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="txt-link">Dieta</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/contato.html">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="txt-link">Contatos</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../views/sobre.html">
+            <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="txt-link">Sobre</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <button id="logout">
+            <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+            <span class="txt-link">Sair</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="container-spinner">
+        <div class="overlay-spinner" >
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="modal-split-trainning">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edite sua Split de Treino <i class="fa-solid fa-address-book"></i></h2>
+          <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="info-split">
+          <p>ABC - Treino de 3 dias por Semana</p>
+          <p>ABCD - Treino de 4 dias por Semana</p>
+          <p>ABCDE - Treino de 5 dias por Semana</p>
+        </div>
+        <form id="add-split-form">
+          <select name="split" id="split">
+            <option value="" disabled selected>Selecione sua Nova Split</option>
+            <option value="ABC">ABC</option>
+            <option value="ABCD">ABCD</option>
+            <option value="ABCDE">ABCDE</option>
+          </select>
+        
+        <div class="container-trainning-days">
+          <h3>Quais os seus dias de treino?</h3>
+          <div id="form-training-days">
+            <label><input type="checkbox" name="training_day" value="segunda"> Segunda</label><br>
+            <label><input type="checkbox" name="training_day" value="terça"> Terça</label><br>
+            <label><input type="checkbox" name="training_day" value="quarta"> Quarta</label><br>
+            <label><input type="checkbox" name="training_day" value="quinta"> Quinta</label><br>
+            <label><input type="checkbox" name="training_day" value="sexta"> Sexta</label><br>
+            <label><input type="checkbox" name="training_day" value="sábado"> Sábado</label><br>
+            <label><input type="checkbox" name="training_day" value="domingo"> Domingo</label><br>
+          </div>
+        </div>
+          
+          <div class="container-btn-split">
+            <span class="error_message"></span>
+            <button type="submit" id="btn-split">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+        <div class="container-user-data">
+            <div class="container-header-data">
+                <h1>Meu Perfil</h1>
+                <span class="btn-editing"><a href="../views/editing-user-data.html"><i class="icon fa-solid fa-pencil"></i>Editar Perfil</a></span>
+            </div>
+            <div class="container-user-datas">
+                <div class="container-grid-user-data">
+                    <div class="user-data">
+                        <div class="data-name-email">
+                            <div class="photo-user">
+
+                            </div>
+                            <div class="data-name">
+                                <span class="name-user"></span>
+                            </div>
+                            <div class="data-email">
+                                <span class="email-user"></span>
+                            </div>
+                        </div>
+                        <div class="main-info-user">
+                            <div class="info-user">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <span class="value-user">
+                                    <p>Split Atual</p>
+                                    <h4 class="split-treino"></h4>
+                                </span>
+                            </div>   
+                        </div>
+                        <div class="btns-container-user">
+                          <button type="button" id="editing-split">
+                              <i class="fa-regular fa-pen-to-square"></i>
+                              <span class="txt-link">Editar Split de Treino</span>
+                          </button>
+                            <button id="logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span class="txt-link">Sair</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="user-data-personal">
+                        <div class="info-users">
+                            <span><i class="fa-solid fa-user"></i><h4>Informações Pessoais</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Nome:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-user"></i>
+                                        <p class="name-user"></p>
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Idade:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <p class="bithday-user"></p>
+                                    </span>
+                                    
+                                </div>
+                                <div class="info">
+                                    <span>Email:</span>
+                                    <span class="info-component">
+                                      <i class="fa-solid fa-envelope"></i>
+                                      <p class="email-user"></p>
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Numero de Telefone:</span>
+                                    <span class="info-component">
+                                      <i class="fa-solid fa-phone"></i>
+                                      <p class="phone-user"></p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-physical">
+                          <span><i class="fa-solid fa-weight-hanging"></i><h4>Informações Físicas</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Altura:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-ruler-vertical"></i>
+                                        <p class="height-user"></p>
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Peso:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-weight-hanging"></i>
+                                        <p class="weight-user"></p>
+                                    </span>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="info-trainning">
+                            <span><i class="fa-solid fa-dumbbell"></i><h4>Informações de Treino</h1></span>
+                            <div class="infos" id="infos">
+                                <div class="info">
+                                    <span>Split de Treino:</span>
+                                    <span class="info-component">
+                                        <i class="fa-solid fa-dumbbell"></i>
+                                        <p class="split-treino"></p>
+                                    </span>
+                                </div>
+                                <div class="info">
+                                    <span>Sobre sua Split de Treino (<p class="split-treino"></p>)</span>
+                                    <p id="sobre-split">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius unde suscipit, quis vel commodi veniam assumenda sequi modi nulla repellat ipsam tempore ipsa. Necessitatibus obcaecati odit quo dolor reiciendis! Totam?</p>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="../javascript/user-data.js"></script>
+    <script src="../javascript/editing-user-split.js"></script>
+    <script src="../javascript/logout.js"></script>
+</body>
+</html>

@@ -54,13 +54,15 @@ const userSchema = new mongoose.Schema({
             exercise: {
               type: [
                 {
+                   _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
                   name: { type: String, required: true },
-                  series: { type: Number, required: true }
+                  series: { type: Number, required: true },
+                  equipment: { type: String, required: true }
                 }
               ],
               validate: {
                 validator: function (val) {
-                  return val.length >= 2 && val.length <= 5;
+                  return val.length >= 1 && val.length <= 5;
                 },
                 message: 'Cada grupo muscular deve ter entre 2 e 5 exercícios.'
               }
