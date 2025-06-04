@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function getTrainning(userId, trainningContainer, trainningsDays) {
         //spinner.style.display = "block";
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/training/week`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/week`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const day    = getDay(); 
 
   // 1) busca os treinamentos do dia...
-  const res = await fetch(`http://localhost:10000/api/${userId}/training/${day}`, { headers: {'Content-Type':'application/json'} });
+  const res = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/${day}`, { headers: {'Content-Type':'application/json'} });
   if (res.status === 404) {
     document.getElementById('title').innerText = `Treino de ${capitalizeFirstLetter(day)}`;
     document.getElementById('exercise-container').innerHTML = `

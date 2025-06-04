@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         showSpinner();
         try {
-            const responseSplit = await fetch(`http://localhost:10000/api/${userId}/create/training/split`, {
+            const responseSplit = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/split`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const responseDays = await fetch(`http://localhost:10000/api/${userId}/create/training/days`, {
+            const responseDays = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/days`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

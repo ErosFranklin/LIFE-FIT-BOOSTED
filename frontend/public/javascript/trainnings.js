@@ -9,17 +9,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     const modal = document.querySelector(".modal-content-trainning"); 
     const closeModal = document.getElementById("close-modal-trainning");
     const closeModalEdit = document.getElementById("close-edit-modal-trainning");
+    const closeModalDelete = document.getElementById("close-delete-modal-trainning");
     const modalEdit = document.querySelector(".modal-edit-trainning");
     const modalEditContent = document.querySelector(".modal-edit-content-trainning");
+    const modalDelete = document.querySelector(".modal-delete-trainning");
+    const modalDeleteContent = document.querySelector(".modal-delete-content-trainning");
     const btnMoreExercise = document.querySelectorAll(".btn-more-exercise");
     const token = localStorage.getItem("token");
     let dia = null;
     let index = null;
     let indexGroup = null
+    let exerciseId = null;
     
     const userId = localStorage.getItem("userId");
     const spinner = document.querySelector(".container-spinner");
     const btnEditExercise = document.querySelector("#btn-edit-exercise");
+    const btnDeleteExercise = document.querySelector("#btn-delete-exercise");
 
     const trainningsDaysData = await getDaysTrainninhg(userId);
     const trainningsDays = trainningsDaysData.training_days
@@ -27,16 +32,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     document.addEventListener('click', async function (event) {
         const btnEdit = event.target.closest('.btn-edit-exercise');
+        const btnDelete = event.target.closest('.btn-delete-exercise');
         if (btnEdit) {
             dia = btnEdit.dataset.id;
             index = parseInt(btnEdit.dataset.index); 
             indexGroup = parseInt(btnEdit.dataset.muscle);
+            exerciseId = btnEdit.dataset.idExercise;
             console.log("Dia:", dia, "Index:", index);
             modalEdit.style.display = "flex";
             modalEditContent.style.display = "flex";
             
             try {
-                const response = await fetch(`http://localhost:10000/api/${userId}/training/${dia}`, {
+                const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/${dia}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -67,12 +74,21 @@ document.addEventListener("DOMContentLoaded", async function () {
                 errorMessageModal.style.display = "block";
                 errorMessageModal.textContent = "Erro ao editar treino. Tente novamente mais tarde.";
             }
+        }else if (btnDelete) {
+            dia = btnDelete.dataset.id;
+            index = parseInt(btnDelete.dataset.index); 
+            indexGroup = parseInt(btnDelete.dataset.muscle);
+            exerciseId = btnDelete.dataset.idExercise;
+            console.log("Dia:", dia, "Index:", index, "Index Group:", indexGroup, "Exercise ID:", exerciseId);
+            modalDelete.style.display = "flex";
+            modalDeleteContent.style.display = "flex";
+            
         }
     });
     async function getTrainning(userId, trainningContainer, trainningsDays) {
         spinner.style.display = "block";
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/training/week`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/week`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -114,10 +130,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                             <li>
                                 Exercício: <span>${ex.name}</span><br>
                                 Quantidade de Séries: <span>${ex.series}</span><br>
-                                <button class="btn-edit-exercise" data-id="${day}" data-index="${index}" data-muscle="${indexGroup}">
+                                Equipamento: <span>${ex.equipment || 'Nao informado'}</span><br>
+                                <button class="btn-edit-exercise" data-id="${day}" data-index="${index}" data-muscle="${indexGroup}" data-id-exercise="${ex._id}">
                                     <i class="fa-solid fa-pencil"></i>
                                 </button>
-                                <button class="btn-delete-exercise" data-id="${day}" data-index="${index}">
+                                <button class="btn-delete-exercise" data-id="${day}" data-index="${index}" data-muscle="${indexGroup}" data-id-exercise="${ex._id}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </li>
@@ -151,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function getDaysTrainninhg(userId) {
         try {
-            const responseData = await fetch(`http://localhost:10000/api/${userId}/training/days`, {
+            const responseData = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/training/days`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -192,10 +209,12 @@ btnAddTrainning.addEventListener("click", async function (event) {
     event.preventDefault();
     const selectTrainingDay = document.getElementById('select-training-day');
     const day = selectTrainingDay.value;
-    
+    spinner.style.display = "block";
 
     if (!day) {
-        alert('Selecione um dia de treino antes de confirmar!');
+        errorMessageModal.style.display = "block";
+        errorMessageModal.textContent = "Selecione um dia de treino antes de confirmar!";
+        spinner.style.display = "none";
         return;
     }
 
@@ -226,13 +245,15 @@ btnAddTrainning.addEventListener("click", async function (event) {
     }));
 
     if (groups.length === 0) {
-        alert('Adicione pelo menos um exercício antes de salvar.');
+        errorMessageModal.style.display = "block";
+        errorMessageModal.textContent = "Deve conter de 1 a 5 exercicios do mesmo grupo muscular.";
+        spinner.style.display = "none";
         return;
     }
     console.log("Grupos enviados:", JSON.stringify(groups, null, 2));
 
     try {
-        const response = await fetch(`http://localhost:10000/api/${userId}/create/training/${day}`, {
+        const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/create/training/${day}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -242,15 +263,18 @@ btnAddTrainning.addEventListener("click", async function (event) {
         });
 
         if (response.ok) {
-            alert('Treino salvo com sucesso!');
             overlay.style.display = "none";   
             modal.style.display = "none";
+            spinner.style.display = "none";
             containerExercises.innerHTML = ""; 
             const data = await response.json();
             console.log("Treino salvo:", data);
+           
+            location.reload();
+
         } else {
             errorMessageModal.style.display = "block";
-            errorMessageModal.textContent = "Deve conter de 2 a 5 exercicios do mesmo grupo muscular.";
+            errorMessageModal.textContent = "Deve conter de 1 a 5 exercicios do mesmo grupo muscular.";
         }
     } catch (error) {
         console.error("Erro ao criar treino:", error);
@@ -267,6 +291,10 @@ btnAddTrainning.addEventListener("click", async function (event) {
         modal.style.display = "none";
        
     });
+    closeModalDelete.addEventListener("click", function () {
+        modalDelete.style.display = "none";
+        modalDeleteContent.style.display = "none";
+    })
 
     btnMoreExercise.forEach(button => {
         button.addEventListener("click", function () {
@@ -306,6 +334,7 @@ btnAddTrainning.addEventListener("click", async function (event) {
         });
     });
     btnEditExercise.addEventListener("click", async function (event) {
+        spinner.style.display = "block";
         event.preventDefault();
         console.log(userId, dia)
         const exerciseName = modalEditContent.querySelector(".exercise-name").value;
@@ -313,23 +342,27 @@ btnAddTrainning.addEventListener("click", async function (event) {
         const series = parseInt(modalEditContent.querySelector(".series").value);
         const equipment = modalEditContent.querySelector(".equipment").value;
 
-        const groups = [{
-            muscleArea: [muscleGroup],
-            exercise: [{
+        console.log("Dados do exercício:", exerciseName, muscleGroup, series, equipment);
+
+        const payload = {
+            groups: [{
+                muscleArea: [muscleGroup],
+                exercise: [{
                 name: exerciseName,
                 series: series,
                 equipment: equipment
+                }]
             }]
-        }];
+        };
 
         try{
-            const response = await fetch(`http://localhost:10000/api/${userId}/update/training/${dia}`, {
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/update/training/${dia}?exerciseId=${exerciseId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({groups} )
+                body: JSON.stringify(payload )
             })
             if(!response.ok) {
                 throw new Error("Erro ao atualizar treino.");
@@ -339,15 +372,42 @@ btnAddTrainning.addEventListener("click", async function (event) {
             
             modalEdit.style.display = "none";
             modalEditContent.style.display = "none";
+            spinner.style.display = "none";
+            location.reload();
         }catch (error) {
             console.error("Erro ao atualizar treino:", error);
             errorMessageModal.style.display = "block";
             errorMessageModal.textContent = "Erro ao atualizar treino. Tente novamente mais tarde.";
+            spinner.style.display = "none";
         }
 
 
 
 
+    })
+    btnDeleteExercise.addEventListener("click", async function (event) {
+        event.preventDefault();
+        try{
+            const response = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/delete/training/${dia}?exerciseId=${exerciseId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            if(!response.ok) {
+                throw new Error("Erro ao deletar treino.");
+            }
+            const data = await response.json();
+            console.log("Treino deletado:", data);
+            modalDelete.style.display = "none";
+            modalDeleteContent.style.display = "none";
+            location.reload();
+        }catch (error) {
+            console.error("Erro ao deletar treino:", error);
+            errorMessageModal.style.display = "block";
+            errorMessageModal.textContent = "Erro ao deletar treino. Tente novamente mais tarde.";
+        }
     })
    
     

@@ -18,21 +18,15 @@
       </div>
       <ul>
         <li class="menu-item">
+          <a href="../views/dashboard.html">
+            <span class="icon"><i class="fa-solid fa-house"></i></span>
+            <span class="txt-link">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
           <a href="../views/user-data.html">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <span class="txt-link">Dados</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../views/trainning.html">
-            <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
-            <span class="txt-link">Treinos</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../views/contato.html">
-            <span class="icon"><i class="fa-solid fa-utensils"></i></span>
-            <span class="txt-link">Dieta</span>
           </a>
         </li>
         <li class="menu-item">
@@ -110,6 +104,22 @@
         </div>
       </div>
     </div>
+      <div class="modal-delete-trainning">
+        <div class="modal-delete-content-trainning">
+          <div class="modal-header-trainning">
+            <h2>Deletar Treino <i class="fa-solid fa-trash"></i></h2>
+            <button id="close-delete-modal-trainning"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form id="delete-exercise-form" class="delete-exercise-form">
+            <p>Você tem certeza que deseja deletar este treino?</p>
+            <div class="container-btn-delete">
+              <span class="error_message_modal_delete"></span>
+              <button type="submit" id="btn-delete-exercise">Deletar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     <div class="modal-split-trainning">
       <div class="modal-content">
         <div class="modal-header">
@@ -239,5 +249,6 @@
 -->
   <script src="../javascript/trainning-split.js"></script>
   <script src="../javascript/trainnings.js"></script>
+  <script src="../javascript/logout.js"></script>
 </body>
 </html>
