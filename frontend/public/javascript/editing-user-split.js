@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showSpinner();
         try {
             const training_split = { training_split: trainingSplit };
-            const responseSplit = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/update/training/split`, {
+            const responseSplit = await fetch(`http://localhost:10000/api/${userId}/update/training/split`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const responseDays = await fetch(`https://life-fit-boosted.vercel.app/api/${userId}/update/training/days`, {
+            const responseDays = await fetch(`http://localhost:10000/api/${userId}/update/training/days`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
